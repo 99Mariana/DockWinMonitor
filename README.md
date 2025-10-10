@@ -13,3 +13,9 @@ https://www.bing.com/videos/riverview/relatedvideo?&q=server+monitorinh+%2f%2fpr
 
 Udemy:
 https://www.udemy.com/course/prometheus-and-grafana-learn-monitoring-alerting-today/?utm_source=bing&utm_medium=udemyads&utm_campaign=BG-Search_DSA_Beta_Prof_la.EN_cc.ROW-English&campaigntype=Search&portfolio=Bing-ROW-English&language=EN&product=Course&test=&audience=DSA&topic=&priority=Beta&utm_content=deal4584&utm_term=_._ag_1326013411676364_._ad__._kw_IT+en_._de_c_._dm__._pl__._ti_dat-2334675503276564%3Aloc-152_._li_136968_._pd__._&matchtype=b&msclkid=867563032908100915820be5a09e823d&couponCode=PMNVD3025
+
+
+<img width="1351" height="811" alt="image" src="https://github.com/user-attachments/assets/412efb05-d9a7-4054-b82e-5aabd7f5dd30" />
+
+https://www.youtube.com/watch?v=mwIQJ1m9ulY
+

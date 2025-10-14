@@ -18,7 +18,7 @@ In simple terms, Prometheus lets you track how systems behave over time and trig
 #### Architecture
 
 As shown on the official website, the architecture of Prometheus and some of its ecosystem components is illustrated below:
-<img width="1000" alt="image" src="https://github.com/user-attachments/assets/fb0c34ea-c913-4aae-8e93-9c9ad552117d" />
+<img width="100" alt="image" src="https://github.com/user-attachments/assets/fb0c34ea-c913-4aae-8e93-9c9ad552117d" />
 
 In this image, we can see the Prometheus server, which is responsible for scraping and storing time series data. It also shows the client libraries used to instrument application code, the Pushgateway that supports short-lived jobs, and various exporters designed for specific services such as HAProxy, StatsD, and Graphite. Additionally, it includes the Alertmanager, which manages alerts, and several supporting tools.
 

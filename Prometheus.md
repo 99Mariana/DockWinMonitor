@@ -26,7 +26,7 @@ To learn more about Prometheus, visit the official documentation at: https://pro
 
 As shown on the official website, the architecture of Prometheus and some of its ecosystem components is illustrated below:
 
-<img width="80%" alt="image" src="https://github.com/user-attachments/assets/fb0c34ea-c913-4aae-8e93-9c9ad552117d" />
+<img width="80%" align="center" alt="" src="https://github.com/user-attachments/assets/fb0c34ea-c913-4aae-8e93-9c9ad552117d" />
 
 In this image, we can see the Prometheus server, which is responsible for scraping and storing time series data. It also shows the client libraries used to instrument application code, the Pushgateway that supports short-lived jobs, and various exporters designed for specific services such as HAProxy, StatsD, and Graphite. Additionally, it includes the Alertmanager, which manages alerts, and several supporting tools.
 
@@ -55,7 +55,7 @@ To get CPU usage for user processes over the last  minute we can introduze the c
 
 ````rate(node_cpu_seconds_total{mode="user"}[1m]) ````
 
-<img width="85%" alt="image" src="https://github.com/user-attachments/assets/437889bb-ca28-4cb8-8805-1663e6884c15" />
+<img width="85%" align="center" alt="" src="https://github.com/user-attachments/assets/437889bb-ca28-4cb8-8805-1663e6884c15" />
 
 
 

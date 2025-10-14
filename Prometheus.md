@@ -26,8 +26,9 @@ To learn more about Prometheus, visit the official documentation at: https://pro
 
 As shown on the official website, the architecture of Prometheus and some of its ecosystem components is illustrated below:
 
-<img width="80%" align="center" alt="" src="https://github.com/user-attachments/assets/fb0c34ea-c913-4aae-8e93-9c9ad552117d" />
-
+<p align="center">
+    <img width="80%"  alt="" src="https://github.com/user-attachments/assets/fb0c34ea-c913-4aae-8e93-9c9ad552117d" />
+</p>
 In this image, we can see the Prometheus server, which is responsible for scraping and storing time series data. It also shows the client libraries used to instrument application code, the Pushgateway that supports short-lived jobs, and various exporters designed for specific services such as HAProxy, StatsD, and Graphite. Additionally, it includes the Alertmanager, which manages alerts, and several supporting tools.
 
 These components work together to form the Prometheus ecosystem: the server continuously collects metrics from different sources, the exporters expose metrics from third-party systems, and the Alertmanager handles notifications based on alerting rules. This architecture enables Prometheus to provide a flexible, reliable, and scalable monitoring solution for dynamic and distributed environments.
@@ -54,10 +55,9 @@ The endpoint http://localhost:9090/query allows you to run instant queries in Pr
 To get CPU usage for user processes over the last  minute we can introduze the code:
 
 ````rate(node_cpu_seconds_total{mode="user"}[1m]) ````
-
-<img width="85%" align="center" alt="" src="https://github.com/user-attachments/assets/437889bb-ca28-4cb8-8805-1663e6884c15" />
-
-
+<p align="center">
+    <img width="85%" align="center" alt="" src="https://github.com/user-attachments/assets/437889bb-ca28-4cb8-8805-1663e6884c15" />
+<p >
 
 In the http://localhost:9090/alerts is shows all the alerting rules that are currently loaded into Prometheus. This are define in the rule_files section of the configuration file., Each alerting rule checks some condition based on metric data (using PromQL), When the condition becomes true, the alert fires.
 

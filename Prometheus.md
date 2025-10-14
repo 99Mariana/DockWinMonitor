@@ -5,7 +5,8 @@
 - [Prometheus](Prometheus.md):
     - [Introduction](#introduction)
     - [Architecture](#architecture)
-    - [Configuration](#configuration)
+    - [Prometheus Configuration](#configuration)
+    - [Exploring Prometheus browser](#browser)
 
 
 ### Introduction
@@ -42,7 +43,9 @@ A Prometheus configuration file consists of three main sections: global, rule_fi
 
 **Scrape_configs** specifies the targets that Prometheus should monitor. Each job includes information about how to discover the targets, where to scrape metrics from, and any additional processing like relabeling or authentication. This section determines what data Prometheus actually collects.
 
-### Expression browser
+### Exploring Prometheus browser
+
+> [Prometheus](#Prometheus) > [Content](#content) > [This section](#browser)
 
 Since Prometheus also exposes data about itself as an HTTP endpoint it can scrape and monitor its own health. In the default configuration there is a single job, called prometheus, which scrapes the time series data exposed by the Prometheus server. The job contains a single, statically configured, target, the localhost on port 9090. Prometheus expects metrics to be available on targets on a path of /metrics. So this default job is scraping via the URL: http://localhost:9090/metrics.
 
@@ -53,6 +56,7 @@ To get CPU usage for user processes over the last  minute we can introduze the c
 ````rate(node_cpu_seconds_total{mode="user"}[1m]) ````
 
 <img width="1637" height="842" alt="image" src="https://github.com/user-attachments/assets/437889bb-ca28-4cb8-8805-1663e6884c15" />
+
 
 In the http://localhost:9090/alerts is shows all the alerting rules that are currently loaded into Prometheus. This are define in the rule_files section of the configuration file., Each alerting rule checks some condition based on metric data (using PromQL), When the condition becomes true, the alert fires — meaning Prometheus marks it as active and can send it to the Alertmanager (if configured).
 

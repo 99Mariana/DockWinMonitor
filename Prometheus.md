@@ -46,14 +46,15 @@ A Prometheus configuration file consists of three main sections: global, rule_fi
 
 Since Prometheus also exposes data about itself as an HTTP endpoint it can scrape and monitor its own health. In the default configuration there is a single job, called prometheus, which scrapes the time series data exposed by the Prometheus server. The job contains a single, statically configured, target, the localhost on port 9090. Prometheus expects metrics to be available on targets on a path of /metrics. So this default job is scraping via the URL: http://localhost:9090/metrics.
 
-The endpoint http://localhost:9090/query lets you run instant queries in Prometheus. This means you can ask Prometheus for current metric values or values at a specific point in time. You send a PromQL (Prometheus Query Language) expression to this endpoint, and it returns the results in JSON.
+The endpoint http://localhost:9090/query allows you to run instant queries in Prometheus. This means you can ask Prometheus for the current metric values or the values at a specific point in time. You send a PromQL (Prometheus Query Language) expression to this endpoint, and it returns the results in JSON format. You can view the results in a table or use the Graph tab to visualize them.
 
-Example: to get CPU usage for user processes over the last  minute we can introduze the code:
+To get CPU usage for user processes over the last  minute we can introduze the code:
 
 ````rate(node_cpu_seconds_total{mode="user"}[1m]) ````
 
 <img width="1637" height="842" alt="image" src="https://github.com/user-attachments/assets/437889bb-ca28-4cb8-8805-1663e6884c15" />
 
+In the http://localhost:9090/alerts is shows all the alerting rules that are currently loaded into Prometheus. This are define in the rule_files section of the configuration file., Each alerting rule checks some condition based on metric data (using PromQL), When the condition becomes true, the alert fires — meaning Prometheus marks it as active and can send it to the Alertmanager (if configured).
 
 
 

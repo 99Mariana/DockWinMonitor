@@ -48,7 +48,9 @@ Since Prometheus also exposes data about itself as an HTTP endpoint it can scrap
 
 The endpoint http://localhost:9090/query lets you run instant queries in Prometheus. This means you can ask Prometheus for current metric values or values at a specific point in time. You send a PromQL (Prometheus Query Language) expression to this endpoint, and it returns the results in JSON.
 
-Example: to get CPU usage for user processes over the last  minute we can introduze the code: rate(node_cpu_seconds_total{mode="user"}[1m])
+Example: to get CPU usage for user processes over the last  minute we can introduze the code:
+````rate(node_cpu_seconds_total{mode="user"}[1m]) ````
+
 <img width="1637" height="842" alt="image" src="https://github.com/user-attachments/assets/437889bb-ca28-4cb8-8805-1663e6884c15" />
 
 

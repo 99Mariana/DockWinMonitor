@@ -4,11 +4,12 @@
 
 - [Prometheus](Prometheus.md):
     - [Introduction](#introduction)
+    - [Architecture](#architecture)
     - [Configuration](#configuration)
 
 
 ### Introduction
-> [Prometheus](#Prometheus) > [Content](#content) > [This section](#Introduction)
+> [Prometheus](#Prometheus) > [Content](#content) > [This section](#introduction)
 
 Prometheus is an open-source systems monitoring and alerting toolkit designed for reliability and scalability. It helps you collect and analyze metrics from various systems and applications to understand their performance and health.
 
@@ -16,7 +17,8 @@ Prometheus collects and stores its metrics as time series data, meaning each met
 
 In simple terms, Prometheus lets you track how systems behave over time and trigger alerts when something goes wrong, making it a powerful tool for monitoring modern infrastructure.
 
-#### Architecture
+### Architecture
+> [Prometheus](#Prometheus) > [Content](#content) > [This section](#Architecture)
 
 As shown on the official website, the architecture of Prometheus and some of its ecosystem components is illustrated below:
 

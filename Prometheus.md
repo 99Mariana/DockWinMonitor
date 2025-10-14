@@ -55,11 +55,10 @@ To get CPU usage for user processes over the last  minute we can introduze the c
 
 ````rate(node_cpu_seconds_total{mode="user"}[1m]) ````
 
-<img width="1637" height="842" alt="image" src="https://github.com/user-attachments/assets/437889bb-ca28-4cb8-8805-1663e6884c15" />
+<img width="85%" alt="image" src="https://github.com/user-attachments/assets/437889bb-ca28-4cb8-8805-1663e6884c15" />
 
 
-In the http://localhost:9090/alerts is shows all the alerting rules that are currently loaded into Prometheus. This are define in the rule_files section of the configuration file., Each alerting rule checks some condition based on metric data (using PromQL), When the condition becomes true, the alert fires — meaning Prometheus marks it as active and can send it to the Alertmanager (if configured).
 
-
+In the http://localhost:9090/alerts is shows all the alerting rules that are currently loaded into Prometheus. This are define in the rule_files section of the configuration file., Each alerting rule checks some condition based on metric data (using PromQL), When the condition becomes true, the alert fires.
 
 

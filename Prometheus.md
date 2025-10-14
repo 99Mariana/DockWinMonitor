@@ -17,6 +17,9 @@ Prometheus collects and stores its metrics as time series data, meaning each met
 
 In simple terms, Prometheus lets you track how systems behave over time and trigger alerts when something goes wrong, making it a powerful tool for monitoring modern infrastructure.
 
+To learn more about Prometheus, visit the official documentation at: https://prometheus.io/docs/introduction/first_steps/
+
+
 ### Architecture
 > [Prometheus](#Prometheus) > [Content](#content) > [This section](#Architecture)
 
@@ -39,8 +42,16 @@ A Prometheus configuration file consists of three main sections: global, rule_fi
 
 **Scrape_configs** specifies the targets that Prometheus should monitor. Each job includes information about how to discover the targets, where to scrape metrics from, and any additional processing like relabeling or authentication. This section determines what data Prometheus actually collects.
 
+### Expression browser
+
 Since Prometheus also exposes data about itself as an HTTP endpoint it can scrape and monitor its own health. In the default configuration there is a single job, called prometheus, which scrapes the time series data exposed by the Prometheus server. The job contains a single, statically configured, target, the localhost on port 9090. Prometheus expects metrics to be available on targets on a path of /metrics. So this default job is scraping via the URL: http://localhost:9090/metrics.
 
-https://prometheus.io/docs/introduction/first_steps/
+The endpoint http://localhost:9090/query lets you run instant queries in Prometheus. This means you can ask Prometheus for current metric values or values at a specific point in time. You send a PromQL (Prometheus Query Language) expression to this endpoint, and it returns the results in JSON.
+
+Example: to get CPU usage for user processes over the last  minute we can introduze the code: rate(node_cpu_seconds_total{mode="user"}[1m])
+<img width="1637" height="842" alt="image" src="https://github.com/user-attachments/assets/437889bb-ca28-4cb8-8805-1663e6884c15" />
+
+
+
 
 

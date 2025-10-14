@@ -61,4 +61,9 @@ To get CPU usage for user processes over the last  minute we can introduze the c
 
 In the http://localhost:9090/alerts is shows all the alerting rules that are currently loaded into Prometheus. This are define in the rule_files section of the configuration file., Each alerting rule checks some condition based on metric data (using PromQL), When the condition becomes true, the alert fires.
 
+<p align="center">
+<img width="85%" alt="" src="https://github.com/user-attachments/assets/2e81cbfe-b9ec-4189-970b-70048c9345a1" />
+<p >
+
+
 

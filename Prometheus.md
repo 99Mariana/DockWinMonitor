@@ -37,12 +37,8 @@ A Prometheus configuration file consists of three main sections: global, rule_fi
 
 **Scrape_configs** specifies the targets that Prometheus should monitor. Each job includes information about how to discover the targets, where to scrape metrics from, and any additional processing like relabeling or authentication. This section determines what data Prometheus actually collects.
 
-
-
-
-
-
 Since Prometheus also exposes data about itself as an HTTP endpoint it can scrape and monitor its own health. In the default configuration there is a single job, called prometheus, which scrapes the time series data exposed by the Prometheus server. The job contains a single, statically configured, target, the localhost on port 9090. Prometheus expects metrics to be available on targets on a path of /metrics. So this default job is scraping via the URL: http://localhost:9090/metrics.
 
+https://prometheus.io/docs/introduction/first_steps/
 
 

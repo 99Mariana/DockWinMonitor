@@ -41,6 +41,32 @@ Watch this video for a more in-depth presentation of Grafana Explore and the off
 
 #### Alerts
 
+An alert rule defines the conditions under which specific metrics are monitored and alerts are triggered.
+An alert rule typically includes:
+
+* **Queries and expressions** that tell Grafana which data to analyze.
+* **A condition** that specifies what must happen for the alert to trigger.
+* **An evaluation interval** that determines how often the rule is checked.
+* **Actions and notifications** that define what happens when the alert is triggered — for example, sending an email.
+
+
+Grafana supports two types of alert rules, Grafana-managed alert rules and Data source-managed alert rules. 
+
+| **Feature**                             | **Grafana-managed alert rules **   | **Data source-managed alert rules**                               |
+| --------------------------------------- | ----------------------------------------------- | ----------------------------------------------------------------- |
+| **Where alerts are created**            | In Grafana                                      | In the data source (e.g., Prometheus, Loki, Mimir)                |
+| **Where alerts are stored**             | Grafana database                                | Data source configuration                                         |
+| **Who evaluates the alert**             | Grafana                                         | The data source itself                                            |
+| **Supported data sources**              | Any (Prometheus, Loki, InfluxDB, etc.)          | Mainly Prometheus-based sources                                   |
+| **Integration with Grafana dashboards** | Full integration                                | Limited integration                                               |
+| **Flexibility and features**            | High — advanced configuration and notifications | Basic — depends on the data source capabilities                   |
+| **Best use case**                       | Centralized and unified alert management        | When you already manage alerts inside Prometheus or similar tools |
+
+Grafana recommends using Grafana-managed alert rules, as they are more flexible and fully integrated. Data source-managed alert rules depend on the data source and offer limited integration. Both types of alert rules can be configured in Grafana under the Alerts & IRM tab:
+
+<img width="1855" height="667" alt="image" src="https://github.com/user-attachments/assets/f7702366-7555-40d4-be9c-da9672ca27e1" />
+
+
 #### Annotations
 
 #### Dashboards variables

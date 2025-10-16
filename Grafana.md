@@ -35,7 +35,9 @@ This interface allows you to choose the database you want to analyze. By selecti
 
 <img width="80%"  alt="" src="https://github.com/user-attachments/assets/e06e6055-572e-4abf-8b63-547330ab9108" />
 
-
+Watch this video for a more in-depth presentation of Grafana Explore and the official website:
+-> https://www.youtube.com/watch?v=1q3YzX2DDM4&t=334s
+-> https://grafana.com/docs/grafana/latest/explore/get-started-with-explore/
 
 #### Alerts
 

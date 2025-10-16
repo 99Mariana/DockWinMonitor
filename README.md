@@ -21,7 +21,9 @@ Windows System Monitoring with Prometheus:
 https://community.grafana.com/t/windows-system-monitoring-with-prometheus/148610
 
 grafana templates: https://grafana.com/grafana/dashboards/?plcmt=oss-nav&search=sap
+
 -sap hana-> https://grafana.com/grafana/dashboards/12758-sap-hana/
+
 -kurbernets-> https://grafana.com/solutions/kubernetes/?pg=dashboards&plcmt=featured-dashboard-1
 
 Udemy:

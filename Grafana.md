@@ -64,11 +64,16 @@ Grafana supports two types of alert rules, Grafana-managed alert rules and Data 
 
 Grafana recommends using Grafana-managed alert rules, as they are more flexible and fully integrated. Data source-managed alert rules depend on the data source and offer limited integration. Both types of alert rules can be configured in Grafana under the Alerts & IRM tab:
 
-<img width="1855" height="667" alt="image" src="https://github.com/user-attachments/assets/f7702366-7555-40d4-be9c-da9672ca27e1" />
+<img width="80%"  alt="" alt="image" src="https://github.com/user-attachments/assets/f7702366-7555-40d4-be9c-da9672ca27e1" />
+
 
 For more information about alert rules, check the official website: https://grafana.com/docs/grafana/latest/alerting/alerting-rules/
 
 #### Annotations
+
+Annotations allow you to mark specific points on a graph or visualization with rich events, making it easier to correlate data when something goes wrong. They appear as vertical lines or icons on graph panels. Hovering over an annotation shows the event description, tags, and can even include links to external systems for more details. Annotations can be created directly in the panel, automatically through the HTTP API, or by configuring annotation queries in the dashboard settings.
+
+For more information about annotations, check the official website: https://grafana.com/docs/grafana/latest/dashboards/build-dashboards/annotate-visualizations/
 
 #### Dashboards variables
 

@@ -4,10 +4,12 @@
 
 - [Grafana](Grafana.md):
     - [Introduction](#introduction)
-    - [Grafana Features and Capabilities](#features)
+    - [Grafana Explore](#explore)
+    - [Alert Rules](#alert)
+    - [Annotations](#annotations)
     - [Exploring Existing Templates and Dashboards](#templates)
     - [Building Custom Dashboards](#building)
-    - [Configuring Alerts and Notifications](#alerts)
+
 
 
 ### Introduction
@@ -21,11 +23,9 @@ Managing software and complex systems is never simple, and unexpected issues are
 
 Together, Grafana and Prometheus form a robust observability stack. Grafana serves as a visualization and analysis layer on top of Prometheus, transforming raw numerical data into clear, interactive dashboards. These dashboards enable teams to easily monitor system health, detect trends, and understand system behavior at a glance.
 
-### Grafana Features and Capabilities
-> [Grafana](#Grafana) > [Content](#content) > [This section](#features)
 
-
-#### Explore metrics, logs, and traces 
+### Grafana Explore
+> [Grafana](#Grafana) > [Content](#content) > [This section](#explore)
 
 Grafana has available a interface that was designed for interative on-the-fly investigation of your data, this interface is called Grafana Explore. Unlike dashboards, which are more static and structured, Explore lets you dig into metrics, logs, and traces in real time to troubleshoot, analyze trends, and understand system behavior.
 
@@ -39,7 +39,8 @@ Watch this video for a more in-depth presentation of Grafana Explore and the off
 -> https://www.youtube.com/watch?v=1q3YzX2DDM4&t=334s
 -> https://grafana.com/docs/grafana/latest/explore/get-started-with-explore/
 
-#### Alerts
+### Alert Rules
+> [Grafana](#Grafana) > [Content](#content) > [This section](#alerts)
 
 An alert rule defines the conditions under which specific metrics are monitored and alerts are triggered.
 An alert rule typically includes:
@@ -69,21 +70,22 @@ Grafana recommends using Grafana-managed alert rules, as they are more flexible 
 
 For more information about alert rules, check the official website: https://grafana.com/docs/grafana/latest/alerting/alerting-rules/
 
-#### Annotations
+### Annotations
+> [Grafana](#Grafana) > [Content](#content) > [This section](#annotations)
 
 Annotations allow you to mark specific points on a graph or visualization with rich events, making it easier to correlate data when something goes wrong. They appear as vertical lines or icons on graph panels. Hovering over an annotation shows the event description, tags, and can even include links to external systems for more details. Annotations can be created directly in the panel, automatically through the HTTP API, or by configuring annotation queries in the dashboard settings.
 
 For more information about annotations, check the official website: https://grafana.com/docs/grafana/latest/dashboards/build-dashboards/annotate-visualizations/
 
-#### Dashboards variables
+### Exploring Existing Templates and Dashboards
+> [Grafana](#Grafana) > [Content](#content) > [This section](#templates)
 
-#### Configure Grafana
+https://grafana.com/grafana/dashboards/?plcmt=oss-nav
 
-#### Import Dashboards and plugins
 
-#### Authentication
+### Building Custom Dashboards
+> [Grafana](#Grafana) > [Content](#content) > [This section](#building)
 
-#### Provision
+https://grafana.com/docs/grafana/latest/dashboards/build-dashboards/create-dashboard/
 
-#### Premissions
 

@@ -82,6 +82,9 @@ For more information about annotations, check the official website: https://graf
 
 https://grafana.com/grafana/dashboards/?plcmt=oss-nav
 
+tutorial: https://grafana.com/docs/grafana/latest/panels-visualizations/visualizations/
+https://grafana.com/docs/grafana/latest/panels-visualizations/visualizations/
+
 
 ### Building Custom Dashboards
 > [Grafana](#Grafana) > [Content](#content) > [This section](#building)

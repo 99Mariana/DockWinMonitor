@@ -66,6 +66,7 @@ Grafana recommends using Grafana-managed alert rules, as they are more flexible 
 
 <img width="1855" height="667" alt="image" src="https://github.com/user-attachments/assets/f7702366-7555-40d4-be9c-da9672ca27e1" />
 
+For more information about alert rules, check the official website: https://grafana.com/docs/grafana/latest/alerting/alerting-rules/
 
 #### Annotations
 

@@ -24,3 +24,22 @@ Together, Grafana and Prometheus form a robust observability stack. Grafana serv
 ### Grafana Features and Capabilities
 > [Grafana](#Grafana) > [Content](#content) > [This section](#features)
 
+
+#### Explore metrics, logs, and traces 
+
+#### Alerts
+
+#### Annotations
+
+#### Dashboards variables
+
+#### Configure Grafana
+
+#### Import Dashboards and plugins
+
+#### Authentication
+
+#### Provision
+
+#### Premissions
+

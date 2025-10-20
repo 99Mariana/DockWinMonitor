@@ -38,4 +38,5 @@ get started with sap hana:
 https://developers.sap.com/topics/hana.html
 https://www.sap.com/products/data-cloud/hana/express-trial.html
 https://developers.sap.com/group.hana-cloud-get-started.html
+https://grafana.com/docs/plugins/grafana-saphana-datasource/latest/
 

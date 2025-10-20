@@ -40,3 +40,8 @@ https://www.sap.com/products/data-cloud/hana/express-trial.html
 https://developers.sap.com/group.hana-cloud-get-started.html
 https://grafana.com/docs/plugins/grafana-saphana-datasource/latest/
 
+
+
+Parametros windows
+<img width="1895" height="894" alt="image" src="https://github.com/user-attachments/assets/3d2b1b87-5b31-4780-84d7-6e1f789130f3" />
+

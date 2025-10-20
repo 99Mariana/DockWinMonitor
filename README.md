@@ -33,3 +33,9 @@ https://www.udemy.com/course/prometheus-and-grafana-learn-monitoring-alerting-to
 
 https://www.youtube.com/watch?v=mwIQJ1m9ulY
 
+
+get started with sap hana:
+https://developers.sap.com/topics/hana.html
+https://www.sap.com/products/data-cloud/hana/express-trial.html
+https://developers.sap.com/group.hana-cloud-get-started.html
+

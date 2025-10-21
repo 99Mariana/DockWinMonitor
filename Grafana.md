@@ -53,7 +53,7 @@ An alert rule typically includes:
 
 Grafana supports two types of alert rules, Grafana-managed alert rules and Data source-managed alert rules. 
 
-| **Feature**                             | **Grafana-managed alert rules **   | **Data source-managed alert rules**                               |
+| **Feature**                             | **Grafana-managed alert rules**   | **Data source-managed alert rules**                               |
 | --------------------------------------- | ----------------------------------------------- | ----------------------------------------------------------------- |
 | **Where alerts are created**            | In Grafana                                      | In the data source (e.g., Prometheus, Loki, Mimir)                |
 | **Where alerts are stored**             | Grafana database                                | Data source configuration                                         |

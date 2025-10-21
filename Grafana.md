@@ -70,6 +70,23 @@ Grafana recommends using Grafana-managed alert rules, as they are more flexible 
 
 For more information about alert rules, check the official website: https://grafana.com/docs/grafana/latest/alerting/alerting-rules/
 
+#### How to create a Grafana-managed alert rule
+
+The first step to create a grafana-managed alert rule is to create a contact point. A contact point is a configured destination for alerts, it defines where and how notifications are sent when an alert triggers. Each contact point specifies the communication channel (such as email, Slack, Telegram, webhook, etc.), its settings, and message templates. It works together with alert rules (which define alert conditions) and notification policies (which route alerts to specific contact points), forming the core of Grafana’s alerting system.
+
+In the left menu in grafana we have a tab to create the contact point. In this case, we use Webhook.site to get a unique URL that we can use for this test.
+<img width="80%" alt="" src="https://github.com/user-attachments/assets/bb2aab05-956d-4eb1-815f-6bf83c824565" />
+
+The next step is to set up an alert rule. To do this, we go to the Alert rules tab, define the query and alert condition, choose a folder to store the rule, and select the contact point for notifications. We can also add a summary and description. In this example, an alert rule for CPU utilization was created.
+
+<img width="80%" alt="" src="https://github.com/user-attachments/assets/73cb8869-b10f-4ad3-8274-69b3fa20c2fe" />
+
+With both the contact point and the alert rule configured, we will start receiving alert notifications through a public webhook. This setup allows us to monitor when an alert is triggered and when the issue has been resolved, providing a complete view of the alert lifecycle.
+
+<img width="80%"  alt="image" src="https://github.com/user-attachments/assets/b58218d1-908b-4605-b645-740aa67b3e84" />
+
+For a more detailed tutorial, check out: https://grafana.com/tutorials/alerting-get-started/
+
 ### Annotations
 > [Grafana](#Grafana) > [Content](#content) > [This section](#annotations)
 

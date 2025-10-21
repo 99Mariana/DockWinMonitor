@@ -88,7 +88,9 @@ With both the contact point and the alert rule configured, we will start receivi
 
 <img width="80%"  alt="image" src="https://github.com/user-attachments/assets/b58218d1-908b-4605-b645-740aa67b3e84" />
 
-For a more detailed tutorial, check out: https://grafana.com/tutorials/alerting-get-started/
+For a more detailed tutorial, check out: 
+https://grafana.com/tutorials/alerting-get-started/
+https://grafana.com/tutorials/alerting-get-started/#set-evaluation-behavior
 
 ### Annotations
 > [Grafana](#Grafana) > [Content](#content) > [This section](#annotations)

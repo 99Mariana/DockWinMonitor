@@ -116,6 +116,9 @@ tutorial: https://grafana.com/docs/grafana/latest/panels-visualizations/visualiz
 https://grafana.com/docs/grafana/latest/panels-visualizations/visualizations/
 
 
+
+
+Webhook.
 <img width="80%" alt="" src="https://github.com/user-attachments/assets/b7933495-5518-47fa-88ca-79e8f716c926" />
 
 

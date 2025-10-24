@@ -118,7 +118,8 @@ https://grafana.com/docs/grafana/latest/panels-visualizations/visualizations/
 
 
 
-Webhook:
+Webhook-flask:
+
 <img width="80%" alt="image" src="https://github.com/user-attachments/assets/f345d29b-fcf3-48e0-a26d-b26d1b30b179" />
 
 

@@ -7,9 +7,7 @@
     - [Grafana Explore](#explore)
     - [Alert Rules](#alert)
     - [Annotations](#annotations)
-    - [Exploring Existing Templates and Dashboards](#templates)
-    - [Building Custom Dashboards](#building)
-
+    - [Building a Dashboard](#templates)
 
 
 ### Introduction
@@ -121,7 +119,7 @@ Annotations allow you to mark specific points on a graph or visualization with r
 
 For more information about annotations, check the official website: https://grafana.com/docs/grafana/latest/dashboards/build-dashboards/annotate-visualizations/
 
-### Exploring Existing Templates and Dashboards
+### Building a Dashboard
 > [Grafana](#Grafana) > [Content](#content) > [This section](#templates)
 
 Grafana provides a wide range of dashboard templates that can be downloaded and imported for free into any Grafana instance:
@@ -137,7 +135,9 @@ To import a template, navigate to the 'New Dashboard' option and upload the corr
 It is also possible to create a dashboard from scratch. For a step-by-step introduction, watch the videos below:
 
 https://grafana.com/docs/grafana/latest/dashboards/build-dashboards/create-dashboard/
+
 https://grafana.com/docs/grafana/latest/panels-visualizations/visualizations/
+
 https://grafana.com/docs/grafana/latest/panels-visualizations/visualizations/
 
 

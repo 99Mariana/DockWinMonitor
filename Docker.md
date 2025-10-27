@@ -5,8 +5,7 @@
 - [Docker](Docker.md):
     - [What is Docker?](#introduction)
     - [Difference between Docker and Virtual Machines](#machines)
-    - [What is Docker Images?](#images)
-    - [What is Docker Containers?](#containers)
+    - [Images and Containers?](#images_containers)
     - [Public and Private Registries](#registries)
     - [Main Docker commands](#commands)
 
@@ -38,6 +37,11 @@ As a result, Docker images are much smaller compared to virtual machine images. 
 
 Docker was originally build for Linux OS , and so most of containers are Linux based. However later Docker made a update and developed the Docker Desktop for Windows and Mac that allows us to run Linux containers on Windows or Mac OS. 
 
+### Images and Containers
+> [Docker](#Docker) > [Content](#content) > [This section](#images_containers)
 
+A Docker image is an executable application artifact that can be easily shared and moved between systems. It can be uploaded to an artifact repository and then downloaded to a server whenever needed. A Docker image not only includes the application’s source code but also the complete environment configuration. This ensures that the application runs the same way on any system, making deployment faster and more reliable. 
+
+The image is like a immutable template that defines how container will be realized. A container is a running instance of a image, and corresponde of the moment when the environment is created. And so for an image we can run multiple containers.
 
 

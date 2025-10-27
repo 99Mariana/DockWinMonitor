@@ -5,8 +5,8 @@
 - [Docker](Docker.md):
     - [What is Docker?](#introduction)
     - [Difference between Docker and Virtual Machines](#machines)
-    - [Explore Images](#images)
-    - [Explore Containers](#containers)
+    - [What is Docker Images?](#images)
+    - [What is Docker Containers?](#containers)
     - [Public and Private Registries](#registries)
     - [Main Docker commands](#commands)
 

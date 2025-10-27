@@ -92,6 +92,28 @@ For a more detailed tutorial, check out:
 https://grafana.com/tutorials/alerting-get-started/
 https://grafana.com/tutorials/alerting-get-started/#set-evaluation-behavior
 
+To make the alert easier to read, we can create a template. In this example, I’ll use a Flask webhook to receive the notification as a test, but a similar approach could also be applied to email notifications. 
+
+Using a template like this allows for a more consistent and readable alert format:
+
+```
+{{ len .Alerts }} alert(s)
+
+{{ range .Alerts }}
+Summary: {{ .Annotations.summary }}
+Status: {{ .Status }}
+Description: {{ .Annotations.description }}
+
+{{ end }}
+```
+
+<img width="80%" alt="image" src="https://github.com/user-attachments/assets/f345d29b-fcf3-48e0-a26d-b26d1b30b179" />
+
+Note that to be possible to extract the message sent by Grafana, it was necessary to develop the **`webhook_server.py`** file. Grafana sends alerts in raw JSON format through a Webhook, which by itself does not display the information in a readable or structured way. The script serves as a bridge between Grafana and the user, converting the JSON alert data into meaningful and readable information.
+
+The Python file, built using Flask, acts as a lightweight web server that listens for these alerts via HTTP POST requests. When an alert is received, the script extracts the relevant data — such as labels, values, and descriptions — and replaces the dynamic variables in the alert template (for example, `{{ index $labels "instance" }}`) with their actual values. It then formats and prints a clear, human-readable message to the console.
+
+
 ### Annotations
 > [Grafana](#Grafana) > [Content](#content) > [This section](#annotations)
 
@@ -116,11 +138,6 @@ tutorial: https://grafana.com/docs/grafana/latest/panels-visualizations/visualiz
 https://grafana.com/docs/grafana/latest/panels-visualizations/visualizations/
 
 
-
-
-Webhook-flask:
-
-<img width="80%" alt="image" src="https://github.com/user-attachments/assets/f345d29b-fcf3-48e0-a26d-b26d1b30b179" />
 
 
 

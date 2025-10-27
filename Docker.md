@@ -54,3 +54,5 @@ docker pull {name}:{tag}
 
 The tag is a identifier for the different versions of an image. 
 
+
+

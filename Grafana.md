@@ -21,6 +21,8 @@ Managing software and complex systems is never simple, and unexpected issues are
 
 Together, Grafana and Prometheus form a robust observability stack. Grafana serves as a visualization and analysis layer on top of Prometheus, transforming raw numerical data into clear, interactive dashboards. These dashboards enable teams to easily monitor system health, detect trends, and understand system behavior at a glance.
 
+Grafana can be accessed locally by navigating to: http://localhost:3000/
+
 
 ### Grafana Explore
 > [Grafana](#Grafana) > [Content](#content) > [This section](#explore)
@@ -35,6 +37,7 @@ This interface allows you to choose the database you want to analyze. By selecti
 
 Watch this video for a more in-depth presentation of Grafana Explore and the official website:
 -> https://www.youtube.com/watch?v=1q3YzX2DDM4&t=334s
+
 -> https://grafana.com/docs/grafana/latest/explore/get-started-with-explore/
 
 ### Alert Rules
@@ -134,11 +137,11 @@ To import a template, navigate to the 'New Dashboard' option and upload the corr
 
 It is also possible to create a dashboard from scratch. For a step-by-step introduction, watch the videos below:
 
-https://grafana.com/docs/grafana/latest/dashboards/build-dashboards/create-dashboard/
+-> https://grafana.com/docs/grafana/latest/dashboards/build-dashboards/create-dashboard/
 
-https://grafana.com/docs/grafana/latest/panels-visualizations/visualizations/
+-> https://grafana.com/docs/grafana/latest/panels-visualizations/visualizations/
 
-https://grafana.com/docs/grafana/latest/panels-visualizations/visualizations/
+-> https://grafana.com/docs/grafana/latest/panels-visualizations/visualizations/
 
 
 

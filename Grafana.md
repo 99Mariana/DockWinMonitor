@@ -124,7 +124,17 @@ For more information about annotations, check the official website: https://graf
 ### Exploring Existing Templates and Dashboards
 > [Grafana](#Grafana) > [Content](#content) > [This section](#templates)
 
+Grafana provides a wide range of dashboard templates that can be downloaded and imported for free into any Grafana instance:
+
 https://grafana.com/grafana/dashboards/?plcmt=oss-nav
+
+These templates have been developed by the community and industry experts for various software systems and monitoring tools, such as Prometheus, Elasticsearch, Kubernetes, Docker, MySQL, among others. Each template comes pre-configured with the most relevant metrics for each monitored software, offering a clear and immediate overview of system performance, resource usage, and key operational indicators. In addition, the dashboards include ready-to-use visualizations that help users quickly interpret data and identify potential issues. These templates are also highly customizable, allowing users to adapt them according to their specific needs or infrastructure — panels can be modified, new metrics added, and visual styles adjusted. As a result, Grafana templates not only provide an efficient starting point for building monitoring dashboards but also help accelerate the deployment of observability solutions and encourage the adoption of monitoring best practices grounded in community expertise and real-world use cases.
+
+To import a template, navigate to the 'New Dashboard' option and upload the corresponding file:
+
+<img width="80%" alt="" src="https://github.com/user-attachments/assets/fc6079a5-ca88-458e-bc7c-cf1254f8a8fe" />
+
+
 
 
 

@@ -31,7 +31,8 @@ Both Docker and Virtual Machines are virtualization tools; however, the main dif
 
 The virtual machine virtualize both Operating System Kernel layer and Operating System Application Layer. 
 
-<img width="80%"  alt="" src="https://github.com/user-attachments/assets/b3e8b694-e976-436f-a522-e8312bbe79a8" />
+<img width="60%"  alt="" src="https://github.com/user-attachments/assets/b3e8b694-e976-436f-a522-e8312bbe79a8" />
+
 
 As a result, Docker images are much smaller compared to virtual machine images. Consequently, Docker can start containers much faster because virtual machines need to boot their own kernel every time, whereas Docker reuses the host’s kernel. Regarding compatibility, virtual machines allow you to run an image of any OS on a different host OS—for example, running a Linux virtual machine on a Windows machine. However, Docker does not provide this level of OS isolation directly, as containers rely on the host’s kernel. 
 

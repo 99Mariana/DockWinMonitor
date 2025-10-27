@@ -44,4 +44,13 @@ A Docker image is an executable application artifact that can be easily shared a
 
 The image is like a immutable template that defines how container will be realized. A container is a running instance of a image, and corresponde of the moment when the environment is created. And so for an image we can run multiple containers.
 
+Docker Hub is a cloud-based repository service where developers can store, share, and manage Docker images: https://hub.docker.com/search?badges=official
+
+To upload an image using Docker Desktop, simply run a command like the one below in the Docker terminal:
+
+```
+docker pull {name}:{tag}
+```
+
+The tag is a identifier for the different versions of an image. 
 

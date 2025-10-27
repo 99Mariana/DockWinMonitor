@@ -134,17 +134,10 @@ To import a template, navigate to the 'New Dashboard' option and upload the corr
 
 <img width="80%" alt="" src="https://github.com/user-attachments/assets/fc6079a5-ca88-458e-bc7c-cf1254f8a8fe" />
 
-
-
-
-
-### Building Custom Dashboards
-> [Grafana](#Grafana) > [Content](#content) > [This section](#building)
+It is also possible to create a dashboard from scratch. For a step-by-step introduction, watch the videos below:
 
 https://grafana.com/docs/grafana/latest/dashboards/build-dashboards/create-dashboard/
-
-
-tutorial: https://grafana.com/docs/grafana/latest/panels-visualizations/visualizations/
+https://grafana.com/docs/grafana/latest/panels-visualizations/visualizations/
 https://grafana.com/docs/grafana/latest/panels-visualizations/visualizations/
 
 

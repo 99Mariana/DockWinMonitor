@@ -6,7 +6,6 @@
     - [What is Docker?](#introduction)
     - [Difference between Docker and Virtual Machines](#machines)
     - [Images and Containers?](#images_containers)
-    - [Public and Private Registries](#registries)
     - [Main Docker commands](#commands)
 
 
@@ -54,5 +53,136 @@ docker pull {name}:{tag}
 
 The tag is a identifier for the different versions of an image. 
 
+### Main Docker commands
+> [Docker](#Docker) > [Content](#content) > [This section](#commands)
+
+#### **General Docker Commands**
+
+| Command                | Description                                                                                                            |
+| ---------------------- | ---------------------------------------------------------------------------------------------------------------------- |
+| `docker --version`     | Displays the installed Docker version.                                                                                 |
+| `docker info`          | Shows detailed system-wide information about Docker, including number of containers, images, storage driver, and more. |
+| `docker help`          | Lists all available Docker commands and options.                                                                       |
+| `docker login`         | Authenticates with a Docker registry (like Docker Hub).                                                                |
+| `docker logout`        | Logs out from a Docker registry.                                                                                       |
+| `docker search <term>` | Searches Docker Hub (or another registry) for images by keyword.                                                       |
 
 
+#### **Container Commands**
+
+| Command                                              | Description                                                                     |
+| ---------------------------------------------------- | ------------------------------------------------------------------------------- |
+| `docker run <image>`                                 | Creates and starts a container from a specified image.                          |
+| `docker run -d <image>`                              | Runs a container in detached mode (in the background).                          |
+| `docker run -it <image> /bin/bash`                   | Runs a container interactively with a terminal session (ideal for debugging).   |
+| `docker run --name <container_name> <image>`         | Assigns a custom name to the container when it’s created.                       |
+| `docker run -p <host_port>:<container_port> <image>` | Maps a port from the host to the container (for exposing web apps, APIs, etc.). |
+| `docker run -v <host_path>:<container_path> <image>` | Mounts a local directory or volume to a path inside the container.              |
+| `docker start <container_id>`                        | Starts a stopped container.                                                     |
+| `docker stop <container_id>`                         | Gracefully stops a running container.                                           |
+| `docker restart <container_id>`                      | Restarts a running container.                                                   |
+| `docker pause <container_id>`                        | Pauses all processes inside a container.                                        |
+| `docker unpause <container_id>`                      | Resumes all processes inside a paused container.                                |
+| `docker rm <container_id>`                           | Removes a stopped container from the system.                                    |
+| `docker exec -it <container_id> <command>`           | Executes a command inside a running container (e.g., `bash` or `sh`).           |
+| `docker logs <container_id>`                         | Shows the standard output (stdout/stderr) logs of a container.                  |
+| `docker stats`                                       | Displays a live stream of resource usage (CPU, memory, I/O) for all containers. |
+| `docker top <container_id>`                          | Lists running processes inside a container.                                     |
+
+#### **Image Commands**
+
+| Command                                               | Description                                                                      |
+| ----------------------------------------------------- | -------------------------------------------------------------------------------- |
+| `docker images`                                       | Lists all local Docker images with repository, tag, and size info.               |
+| `docker pull <image>`                                 | Downloads an image from a remote Docker registry (like Docker Hub).              |
+| `docker push <image>`                                 | Uploads a local image to a remote registry (requires `docker login`).            |
+| `docker build -t <image_name> .`                      | Builds a new Docker image from a Dockerfile in the current directory.            |
+| `docker build --no-cache -t <image_name> .`           | Builds an image from scratch, ignoring all cached layers.                        |
+| `docker build -f <Dockerfile_name> -t <image_name> .` | Builds an image using a specific Dockerfile.                                     |
+| `docker rmi <image_id>`                               | Removes one or more images from the local system.                                |
+| `docker tag <image_id> <repo>:<tag>`                  | Tags an existing image with a new name or version tag.                           |
+| `docker history <image>`                              | Shows the history of an image’s layers and commands used to build it.            |
+| `docker inspect <image>`                              | Displays detailed JSON metadata about an image (environment vars, labels, etc.). |
+
+#### **Network Commands**
+
+| Command                                                     | Description                                          |
+| ----------------------------------------------------------- | ---------------------------------------------------- |
+| `docker network ls`                                         | Lists all Docker networks available on the host.     |
+| `docker network create <network_name>`                      | Creates a new custom network.                        |
+| `docker network inspect <network_name>`                     | Shows detailed information about a specific network. |
+| `docker network connect <network_name> <container_name>`    | Connects a container to an existing network.         |
+| `docker network disconnect <network_name> <container_name>` | Disconnects a container from a network.              |
+| `docker network prune`                                      | Removes all unused networks.                         |
+
+#### **Volume Commands**
+
+| Command                               | Description                                             |
+| ------------------------------------- | ------------------------------------------------------- |
+| `docker volume ls`                    | Lists all Docker-managed volumes.                       |
+| `docker volume create <volume_name>`  | Creates a new named volume for persistent data storage. |
+| `docker volume inspect <volume_name>` | Displays metadata and mount paths for a volume.         |
+| `docker volume rm <volume_name>`      | Removes a named volume (must not be in use).            |
+| `docker volume prune`                 | Deletes all unused volumes to reclaim disk space.       |
+
+#### **Filesystem & Data Commands**
+
+| Command                                       | Description                                                                  |
+| --------------------------------------------- | ---------------------------------------------------------------------------- |
+| `docker cp <container_id>:<path> <host_path>` | Copies files or directories **from a container to the host**.                |
+| `docker cp <host_path> <container_id>:<path>` | Copies files or directories **from the host to a container**.                |
+| `docker diff <container_id>`                  | Shows changes made to files and directories inside a container’s filesystem. |
+
+#### **Inspection & Monitoring Commands**
+
+| Command                         | Description                                                                                |
+| ------------------------------- | ------------------------------------------------------------------------------------------ |
+| `docker ps`                     | Lists currently running containers.                                                        |
+| `docker ps -a`                  | Lists all containers, including stopped ones.                                              |
+| `docker inspect <object_id>`    | Displays detailed information about a container, image, network, or volume in JSON format. |
+| `docker events`                 | Streams real-time events from the Docker daemon (useful for monitoring).                   |
+| `docker logs -f <container_id>` | Follows (streams) live container logs.                                                     |
+| `docker stats`                  | Displays live performance metrics of running containers.                                   |
+
+#### **Docker Compose Commands**
+
+| Command                  | Description                                                                      |
+| ------------------------ | -------------------------------------------------------------------------------- |
+| `docker-compose up`      | Builds, creates, and starts all services defined in a `docker-compose.yml` file. |
+| `docker-compose down`    | Stops and removes all services, networks, and volumes created by Compose.        |
+| `docker-compose ps`      | Lists running containers managed by Docker Compose.                              |
+| `docker-compose logs`    | Displays aggregated logs from all Compose services.                              |
+| `docker-compose build`   | Builds or rebuilds services defined in a Compose file.                           |
+| `docker-compose restart` | Restarts all running Compose services.                                           |
+
+#### **Docker Swarm (Orchestration)**
+
+| Command                                          | Description                                                            |
+| ------------------------------------------------ | ---------------------------------------------------------------------- |
+| `docker swarm init`                              | Initializes a Docker Swarm cluster on the current node (as a manager). |
+| `docker swarm join`                              | Joins another node to the Swarm as a worker or manager.                |
+| `docker node ls`                                 | Lists all nodes in the Swarm cluster.                                  |
+| `docker service create --name <service> <image>` | Creates and deploys a new service in the Swarm.                        |
+| `docker service ls`                              | Lists all active services in the Swarm.                                |
+| `docker service scale <service>=<replicas>`      | Scales a service to a specific number of replicas.                     |
+| `docker service logs <service>`                  | Displays logs for a specific Swarm service.                            |
+
+#### **System Cleanup & Maintenance**
+
+| Command                  | Description                                                                                     |
+| ------------------------ | ----------------------------------------------------------------------------------------------- |
+| `docker system prune`    | Removes all unused data: stopped containers, dangling images, unused networks, and build cache. |
+| `docker container prune` | Deletes all stopped containers.                                                                 |
+| `docker image prune`     | Removes all dangling (unused) images.                                                           |
+| `docker network prune`   | Removes all unused networks.                                                                    |
+| `docker volume prune`    | Removes all unused volumes.                                                                     |
+| `docker system df`       | Displays disk space usage by Docker objects (containers, images, volumes).                      |
+
+#### **Health Checks & Environment Variables**
+
+| Command                                                        | Description                                                                  |                                                                 |
+| -------------------------------------------------------------- | ---------------------------------------------------------------------------- | --------------------------------------------------------------- |
+| `HEALTHCHECK` *(Dockerfile instruction)*                       | Defines a command in a Dockerfile that periodically checks container health. |                                                                 |
+| `docker inspect --format='{{json .State.Health}}' <container>` | Checks the current health status of a container.                             |                                                                 |
+| `docker run -e <VAR>=<value> <image>`                          | Sets environment variables inside a container at runtime.                    |                                                                 |
+| `docker inspect <container>                                    | grep Env`                                                                    | Displays environment variables defined for a running container. |

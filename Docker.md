@@ -53,6 +53,9 @@ docker pull {name}:{tag}
 
 The tag is a identifier for the different versions of an image. 
 
+To create a custom image, you need to create a Dockerfile, which serves as a “definition” of how to build an image from your application.
+For a more detailed explanation of how to do this, I recommend watching this video (starting at 49:10): https://www.youtube.com/watch?v=pg19Z8LL06w
+
 ### Main Docker commands
 > [Docker](#Docker) > [Content](#content) > [This section](#commands)
 

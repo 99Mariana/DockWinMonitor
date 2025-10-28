@@ -74,6 +74,16 @@ CMD ["python", "app.py"]
 
 This Dockerfile defines how to build a Docker image,  specifying which dependencies to install, which application files to copy, and which command to execute when the container starts. This code example starts with ````FROM python:3.12````, which gives the container a ready-to-use Python 3.12 environment. It sets /app as the working folder inside the container using WORKDIR /app, so all commands run from there. The requirements.txt file is copied into the container with ````COPY requirements.txt```` ., and ````RUN pip install --no-cache-dir -r requirements.txt```` installs all the needed Python packages without keeping unnecessary cache files. Then, COPY . . adds the rest of your project files to the container. Finally, ````CMD ["python", "app.py"]```` tells the container to run your Python application when it starts.
 
+Then to build the image, we execute this command
+```
+docker build -t my_app .
+```
+And to run it :
+```
+docker run -p 5000:5000 my_app
+```
+
+
 ### Docker Compose
 > [Docker](#Docker) > [Content](#content) > [This section](#dockercompose)
 
@@ -112,7 +122,13 @@ services:
 volumes:
   grafana-data:
 ````
-Explaining a little bit of the code below, the **Prometheus** service uses the official Prometheus image and exposes port 9090 to access its web interface. It mounts a local folder `./prometheus` to `/etc/prometheus` inside the container, allowing Prometheus to read its configuration file (`prometheus.yml`), and the `command` specifies which config file to use. The `restart: unless-stopped` option ensures the container restarts automatically unless explicitly stopped. The **Grafana** service uses the official Grafana image (version 10.4.3) and exposes port 3000 for its web interface. It persists data using a Docker volume called `grafana-data`, sets environment variables to define the admin username and password, and enables a specific feature toggle. With `depends_on: - prometheus`, Grafana starts after Prometheus, and `restart: unless-stopped` ensures it restarts automatically.  Finally, the **volumes** section defines `grafana-data` as a named volume to persist Grafana dashboards, settings, and data even if the container is removed.
+Explaining a little bit of the code below: 
+
+The **Prometheus** service uses the official Prometheus image and exposes port 9090 to access its web interface. It mounts a local folder `./prometheus` to `/etc/prometheus` inside the container, allowing Prometheus to read its configuration file (`prometheus.yml`), and the `command` specifies which config file to use. The `restart: unless-stopped` option ensures the container restarts automatically unless explicitly stopped.
+
+The **Grafana** service uses the official Grafana image (version 10.4.3) and exposes port 3000 for its web interface. It persists data using a Docker volume called `grafana-data`, sets environment variables to define the admin username and password, and enables a specific feature toggle. With `depends_on: - prometheus`, Grafana starts after Prometheus, and `restart: unless-stopped` ensures it restarts automatically. 
+
+Finally, the **volumes** section defines `grafana-data` as a named volume to persist Grafana dashboards, settings, and data even if the container is removed.
 
 
 ### Main Docker commands

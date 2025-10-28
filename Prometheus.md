@@ -14,7 +14,7 @@
 
 Prometheus is an open-source systems monitoring and alerting toolkit designed for reliability and scalability. It helps you collect and analyze metrics from various systems and applications to understand their performance and health.
 
-Prometheus collects and stores its metrics as time series data, meaning each metric is recorded along with the timestamp of when it was captured. Additionally, metrics can include **labels**—optional key-value pairs that provide more context, such as the source, service, or instance of the data.
+Prometheus collects and stores its metrics as time series data, meaning each metric is recorded along with the timestamp of when it was captured. Additionally, metrics can include **labels**, optional key-value pairs that provide more context, such as the source, service, or instance of the data.
 
 In simple terms, Prometheus lets you track how systems behave over time and trigger alerts when something goes wrong, making it a powerful tool for monitoring modern infrastructure.
 
@@ -36,6 +36,18 @@ These components work together to form the Prometheus ecosystem: the server cont
 ### Configuration
 > [Prometheus](#Prometheus) > [Content](#content) > [This section](#Configuration)
 
+The `prometheus.yml` file is essential, as it is the main configuration file for Prometheus. It defines which endpoints Prometheus should monitor, such as `windows_exporter` or other services, sets the scraping intervals (how often metrics are collected), configures alerts if needed, and allows you to add labels, targets, and jobs. Without this file, Prometheus won’t know where to collect metrics; it may start successfully, but it won’t gather any useful data. Check the example below:
+
+```yaml
+global:
+  scrape_interval: 15s
+
+scrape_configs:
+  - job_name: 'windows_exporter'
+    static_configs:
+      - targets: ['host.docker.internal:9182']
+```
+
 A Prometheus configuration file consists of three main sections: global, rule_files, and scrape_configs.
 
 **Global** - defines settings that apply to the entire Prometheus server. This includes parameters such as the default time interval for scraping targets (scrape_interval), how often rules are evaluated (evaluation_interval), and any external labels that help identify this Prometheus instance in federated setups or alerts. These configurations act as defaults for all jobs unless they are specifically overridden later in the file.
@@ -43,6 +55,7 @@ A Prometheus configuration file consists of three main sections: global, rule_fi
 **Rule_files** lists the locations of files containing alerting and recording rules. Alerting rules trigger notifications when certain conditions are met, while recording rules create new time series based on existing metrics for easier querying and analysis.
 
 **Scrape_configs** specifies the targets that Prometheus should monitor. Each job includes information about how to discover the targets, where to scrape metrics from, and any additional processing like relabeling or authentication. This section determines what data Prometheus actually collects.
+
 
 ### Exploring Prometheus browser
 

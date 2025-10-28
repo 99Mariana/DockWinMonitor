@@ -29,11 +29,15 @@ Grafana can be accessed locally by navigating to: http://localhost:3000/
 
 Grafana has available a interface that was designed for interative on-the-fly investigation of your data, this interface is called Grafana Explore. Unlike dashboards, which are more static and structured, Explore lets you dig into metrics, logs, and traces in real time to troubleshoot, analyze trends, and understand system behavior.
 
+<p align="center">
 <img width="80%"  alt="" src="https://github.com/user-attachments/assets/80854f79-9502-481d-9d61-eadc029b6888" />
+</p>
 
 This interface allows you to choose the database you want to analyze. By selecting the metric and the label, Grafana Explore automatically generates the query code. Once executed, you can analyze the results.
 
+<p align="center">
 <img width="80%"  alt="" src="https://github.com/user-attachments/assets/e06e6055-572e-4abf-8b63-547330ab9108" />
+</p>
 
 Watch this video for a more in-depth presentation of Grafana Explore and the official website:
 -> https://www.youtube.com/watch?v=1q3YzX2DDM4&t=334s
@@ -66,8 +70,9 @@ Grafana supports two types of alert rules, Grafana-managed alert rules and Data 
 
 Grafana recommends using Grafana-managed alert rules, as they are more flexible and fully integrated. Data source-managed alert rules depend on the data source and offer limited integration. Both types of alert rules can be configured in Grafana under the Alerts & IRM tab:
 
+<p align="center">
 <img width="80%"  alt="" alt="image" src="https://github.com/user-attachments/assets/f7702366-7555-40d4-be9c-da9672ca27e1" />
-
+</p>
 
 For more information about alert rules, check the official website: https://grafana.com/docs/grafana/latest/alerting/alerting-rules/
 
@@ -77,17 +82,22 @@ The first step to create a grafana-managed alert rule is to create a contact poi
 
 In the left menu in grafana we have a tab to create the contact point. In this case, we use Webhook.site to get a unique URL that we can use for this test.
 
+<p align="center">
 <img width="80%" alt="" src="https://github.com/user-attachments/assets/bb2aab05-956d-4eb1-815f-6bf83c824565" />
+</p>
 
 The next step is to set up an alert rule. To do this, we go to the Alert rules tab, define the query and alert condition, choose a folder to store the rule, and select the contact point for notifications. We can also add a summary and description. In this example, an alert rule for CPU utilization was created.
 
 
+<p align="center">
 <img width="80%" alt="" src="https://github.com/user-attachments/assets/73cb8869-b10f-4ad3-8274-69b3fa20c2fe" />
+</p>
 
 With both the contact point and the alert rule configured, we will start receiving alert notifications through a public webhook. This setup allows us to monitor when an alert is triggered and when the issue has been resolved, providing a complete view of the alert lifecycle.
 
-
+<p align="center">
 <img width="80%"  alt="image" src="https://github.com/user-attachments/assets/b58218d1-908b-4605-b645-740aa67b3e84" />
+</p>
 
 For a more detailed tutorial, check out: 
 https://grafana.com/tutorials/alerting-get-started/
@@ -133,7 +143,9 @@ These templates have been developed by the community and industry experts for va
 
 To import a template, navigate to the 'New Dashboard' option and upload the corresponding file:
 
+<p align="center">
 <img width="80%" alt="" src="https://github.com/user-attachments/assets/fc6079a5-ca88-458e-bc7c-cf1254f8a8fe" />
+</p>
 
 It is also possible to create a dashboard from scratch. For a step-by-step introduction, watch the videos below:
 

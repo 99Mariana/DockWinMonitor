@@ -130,6 +130,11 @@ The **Grafana** service uses the official Grafana image (version 10.4.3) and exp
 
 Finally, the **volumes** section defines `grafana-data` as a named volume to persist Grafana dashboards, settings, and data even if the container is removed.
 
+Related to this document is important to know some commands: 
+* **Build images:** `docker-compose build`
+* **Run containers:** `docker-compose up` (add `-d` for background)
+* **Build & run together:** `docker-compose up --build`
+* **Stop containers:** `docker-compose down`
 
 ### Main Docker commands
 > [Docker](#Docker) > [Content](#content) > [This section](#commands)

@@ -6,6 +6,8 @@
     - [What is Docker?](#introduction)
     - [Difference between Docker and Virtual Machines](#machines)
     - [Images and Containers?](#images_containers)
+    - [Creation of a Dockerfile](#dockerfile)
+    - [Docker Compose](#dockercompose)
     - [Main Docker commands](#commands)
 
 
@@ -53,8 +55,65 @@ docker pull {name}:{tag}
 
 The tag is a identifier for the different versions of an image. 
 
+### Creation of a Dockerfile
+> [Docker](#Docker) > [Content](#content) > [This section](#dockerfile)
+
 To create a custom image, you need to create a Dockerfile, which serves as a “definition” of how to build an image from your application.
 For a more detailed explanation of how to do this, I recommend watching this video (starting at 49:10): https://www.youtube.com/watch?v=pg19Z8LL06w
+
+An example of a Dockerfile would be something like this:
+````
+# Dockerfile
+FROM python:3.12
+WORKDIR /app
+COPY requirements.txt .
+RUN pip install -r requirements.txt
+COPY . .
+CMD ["python", "app.py"]
+````
+
+This Dockerfile defines how to build a Docker image,  specifying which dependencies to install, which application files to copy, and which command to execute when the container starts. This code example starts with ````FROM python:3.12````, which gives the container a ready-to-use Python 3.12 environment. It sets /app as the working folder inside the container using WORKDIR /app, so all commands run from there. The requirements.txt file is copied into the container with ````COPY requirements.txt```` ., and ````RUN pip install --no-cache-dir -r requirements.txt```` installs all the needed Python packages without keeping unnecessary cache files. Then, COPY . . adds the rest of your project files to the container. Finally, ````CMD ["python", "app.py"]```` tells the container to run your Python application when it starts.
+
+### Docker Compose
+> [Docker](#Docker) > [Content](#content) > [This section](#dockercompose)
+
+When we already have the images we want to use, it is common to create a Docker Compose file to define how to run the containers. This file specifies which images to use (including those built from Dockerfiles), the ports to expose, volumes to mount, networks to connect, environment variables, and other configuration options that control how the containers interact with each other and with the host system. 
+
+Using Docker Compose is especially used when multiple containers need to work together, for example, in a project that monitors Windows servers using Prometheus and Grafana. In this case, one container could run Prometheus to collect metrics, another Grafana to visualize them, and optionally exporters to gather Windows-specific metrics. Instead of manually running each container with ````docker run````, Docker Compose allows to define everything in a single YAML file, including container dependencies. This approach makes it much easier to start, stop, and manage the entire monitoring stack consistently, both in development and in production.
+
+````
+services:
+  prometheus:
+    image: prom/prometheus:latest
+    container_name: prometheus
+    ports:
+      - "9090:9090"
+    volumes:
+      - ./prometheus:/etc/prometheus
+    command:
+      - '--config.file=/etc/prometheus/prometheus.yml'
+    restart: unless-stopped
+
+  grafana:
+    image: grafana/grafana:10.4.3
+    container_name: grafana
+    ports:
+      - "3000:3000"
+    volumes:
+      - grafana-data:/var/lib/grafana
+    environment:
+      - GF_SECURITY_ADMIN_USER=admin
+      - GF_SECURITY_ADMIN_PASSWORD=admin
+      - GF_FEATURE_TOGGLES_ALERTINGTEMPLATESINLABELSANNOTATIONS=true
+    restart: unless-stopped
+    depends_on:
+      - prometheus
+
+volumes:
+  grafana-data:
+````
+Explaining a little bit of the code below, the **Prometheus** service uses the official Prometheus image and exposes port 9090 to access its web interface. It mounts a local folder `./prometheus` to `/etc/prometheus` inside the container, allowing Prometheus to read its configuration file (`prometheus.yml`), and the `command` specifies which config file to use. The `restart: unless-stopped` option ensures the container restarts automatically unless explicitly stopped. The **Grafana** service uses the official Grafana image (version 10.4.3) and exposes port 3000 for its web interface. It persists data using a Docker volume called `grafana-data`, sets environment variables to define the admin username and password, and enables a specific feature toggle. With `depends_on: - prometheus`, Grafana starts after Prometheus, and `restart: unless-stopped` ensures it restarts automatically.  Finally, the **volumes** section defines `grafana-data` as a named volume to persist Grafana dashboards, settings, and data even if the container is removed.
+
 
 ### Main Docker commands
 > [Docker](#Docker) > [Content](#content) > [This section](#commands)

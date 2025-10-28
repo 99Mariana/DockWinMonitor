@@ -187,5 +187,4 @@ For a more detailed explanation of how to do this, I recommend watching this vid
 | -------------------------------------------------------------- | ---------------------------------------------------------------------------- | --------------------------------------------------------------- |
 | `HEALTHCHECK` *(Dockerfile instruction)*                       | Defines a command in a Dockerfile that periodically checks container health. |                                                                 |
 | `docker inspect --format='{{json .State.Health}}' <container>` | Checks the current health status of a container.                             |                                                                 |
-| `docker run -e <VAR>=<value> <image>`                          | Sets environment variables inside a container at runtime.                    |                                                                 |
-| `docker inspect <container>                                    | grep Env`                                                                    | Displays environment variables defined for a running container. |
+| `docker run -e <VAR>=<value> <image>`                          | Sets environment variables inside a container at runtime.                    |                    

@@ -117,8 +117,9 @@ Description: {{ .Annotations.description }}
 
 {{ end }}
 ```
-
+<p align="center">
 <img width="80%" alt="image" src="https://github.com/user-attachments/assets/f345d29b-fcf3-48e0-a26d-b26d1b30b179" />
+</p>
 
 Note that to be possible to extract the message sent by Grafana, it was necessary to develop the **`webhook_server.py`** file. Grafana sends alerts in raw JSON format through a Webhook, which by itself does not display the information in a readable or structured way. The script serves as a bridge between Grafana and the user, converting the JSON alert data into meaningful and readable information.
 

@@ -124,3 +124,53 @@ The Python file, built using Flask, acts as a lightweight web server that listen
 <img width="80%" alt="image" src="https://github.com/user-attachments/assets/f345d29b-fcf3-48e0-a26d-b26d1b30b179" />
 </p>
 
+## How to run the project
+
+1. First, make sure Docker Desktop and Windows Exporter are installed and running:
+
+   * Download and install Docker Desktop from [https://www.docker.com/products/docker-desktop](https://www.docker.com/products/docker-desktop).
+   * Download the latest Windows Exporter from [https://github.com/prometheus-community/windows_exporter/releases](https://github.com/prometheus-community/windows_exporter/releases).
+
+2. Download the necessary files or clone the repository.
+
+3. Verify the project structure. Make sure it looks like this:
+
+   ```
+   /monitoring-windows/
+   ├── docker-compose.yml
+   ├── prometheus/
+   │   └── prometheus.yml
+   └── webhook/
+       ├── Dockerfile
+       └── webhook_server.py
+   ```
+
+4. Open the Command Prompt and navigate to the project directory using:
+
+   ```bash
+   cd <monitoring-windows>
+   ```
+
+5. Build and start the containers
+
+   ```bash
+   docker-compose up --build -d
+   ```
+
+6. Check if everything is running
+
+   ```bash
+   docker ps
+   ```
+
+7. Access Grafana to explore the dashboard, alert rules, and more.
+   Go to `http://localhost:3000` and log in with the default credentials `admin / admin`.
+
+8. Stop the containers when finished
+
+   ```bash
+   docker-compose down
+   ```
+
+
+

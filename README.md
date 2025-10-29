@@ -145,7 +145,7 @@ The Python file, built using Flask, acts as a lightweight web server that listen
        └── webhook_server.py
    ```
 
-4. Open the Command Prompt and navigate to the project directory using:
+4. Open the Command Prompt and navigate to the project directory.
 
    ```
    cd <monitoring-windows>

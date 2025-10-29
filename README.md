@@ -16,7 +16,7 @@ This project implements a Windows monitoring system using these technologies in 
 
 In short, this project is designed to highlight the relevance and power of modern monitoring tools while providing a hands-on example of how containerized solutions can enhance system management and operational efficiency.
 
-# Technologies Used
+## Technologies Used
 
 * **Docker & Docker Compose**:
     * Used for containerization and orchestration via *Docker Desktop*.
@@ -39,7 +39,7 @@ In short, this project is designed to highlight the relevance and power of moder
 
 * **External Webhook Contact Point (Webhook.site)**:
      * A *Contact Point* was created in Grafana to send alerts to Webhook.site, an online webhook testing service.
-     * This endpoint : **[https://webhook.site/#!/view/2f7264ff-34ca-4d25-bfea-c60a5e0b8370/](https://webhook.site/#!/view/2f7264ff-34ca-4d25-bfea-c60a5e0b8370/)**: was used to validate the correct delivery of alerts and verify their structure and formatting when received externally.
+     * This endpoint : **[https://webhook.site/####!/view/2f7264ff-34ca-4d25-bfea-c60a5e0b8370/](https://webhook.site/####!/view/2f7264ff-34ca-4d25-bfea-c60a5e0b8370/)**: was used to validate the correct delivery of alerts and verify their structure and formatting when received externally.
   
 * **Webhook Service (Flask-based)**:
      * A custom webhook built with Flask, located in the `webhook` directory, created to test how alert messages could be received as formatted text.
@@ -51,7 +51,7 @@ In short, this project is designed to highlight the relevance and power of moder
      * This setup allows alerts to be received by the Flask webhook (`webhook-flask`) in plain text, providing a readable and testable alert format.
 
 
-# Project Structure
+## Project Structure
 
 ```
 /monitoring-windows/
@@ -67,7 +67,7 @@ In short, this project is designed to highlight the relevance and power of moder
 
 ```
 
-# Metrics and Dashboards
+## Metrics and Dashboards
 
 A dashboard was created to provide real-time visualization of key Windows system metrics, enabling easy monitoring and analysis of important performance indicators, including:
 
@@ -84,7 +84,7 @@ A dashboard was created to provide real-time visualization of key Windows system
 The dashboard allows users to quickly detect system bottlenecks, track resource usage, and gain actionable insights for infrastructure optimization and performance management.
 
 
-# Alert Rules
+## Alert Rules
 
 Custom alert rules were created in Grafana( Grafana-managed alert rules ), triggering automatic notifications to configured contact points, such as Webhook.site or a Flask webhook. The alerts implemented include: **CPU Utilization**, **RAM Utilization**, **Disk Utilization**, **Overloaded System**, and **Memory Leak/Zombie Process**. 
 

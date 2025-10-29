@@ -1,4 +1,5 @@
-# Windows System Monitoring with Prometheus, Grafana and Docker
+# DockWinMonitor Project
+## Windows System Monitoring with Prometheus + Grafana + Docker
 
 <p align="center">
 <img width="60%" alt="image" src="https://github.com/user-attachments/assets/a7089567-5cb3-4b66-8c4b-2051ea784b09" />
@@ -31,7 +32,7 @@ In short, this project is designed to highlight the relevance and power of moder
     └── webhook_server.py
 
 ```
-In this repository, in addition to the project's structural files, I share the files I developed, along with the configurations made in Grafana (dashboards, alert rules, and contact points). Additionally, there are three Markdown documents ( [Grafana.md](Grafana.md), [Docker.md](Docker.md), [Prometheus.md](Prometheus.md) ) where I have noted and summarized some key topics I learned about these tools. In these documents, you can find more detailed guidance on how to develop some of the components I worked on in this project.
+In this repository, in addition to the project's structural files, I share the files I developed, along with the configurations made in Grafana (dashboards, alert rules, and contact points). Additionally, there are three Markdown documents ( [Grafana.md](Grafana.md), [Docker.md](Docker.md), [Prometheus.md](Prometheus.md) ) where I note and summarize some key topics I learned about these tools. In these documents, you can find more detailed guidance on how to develop some of the components I worked on in this project.
 
 ## Technologies Used
 

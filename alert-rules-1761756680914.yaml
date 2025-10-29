@@ -1,0 +1,628 @@
+apiVersion: 1
+groups:
+    - orgId: 1
+      name: Windows alerts
+      folder: Windows_alerts
+      interval: 1m
+      rules:
+        - uid: df206c7jyxq0wd
+          title: CPU Utilization
+          condition: C
+          data:
+            - refId: A
+              relativeTimeRange:
+                from: 600
+                to: 0
+              datasourceUid: ef205qustwxs0c
+              model:
+                editorMode: code
+                expr: "100 * (1 - avg by(instance) (\r\n  irate(windows_cpu_time_total{\r\n    mode=\"idle\",\r\n    job=\"windows_exporter\",\r\n    instance=\"host.docker.internal:9182\"\r\n  }[$__rate_interval])\r\n))"
+                instant: true
+                intervalMs: 1000
+                legendFormat: __auto
+                maxDataPoints: 43200
+                range: false
+                refId: A
+            - refId: C
+              relativeTimeRange:
+                from: 600
+                to: 0
+              datasourceUid: __expr__
+              model:
+                conditions:
+                    - evaluator:
+                        params:
+                            - 75
+                        type: gt
+                      operator:
+                        type: and
+                      query:
+                        params:
+                            - C
+                      reducer:
+                        params: []
+                        type: last
+                      type: query
+                datasource:
+                    type: __expr__
+                    uid: __expr__
+                expression: A
+                intervalMs: 1000
+                maxDataPoints: 43200
+                refId: C
+                type: threshold
+            - refId: B
+              datasourceUid: __expr__
+              model:
+                conditions:
+                    - evaluator:
+                        params:
+                            - 0
+                            - 0
+                        type: gt
+                      operator:
+                        type: and
+                      query:
+                        params: []
+                      reducer:
+                        params: []
+                        type: avg
+                      type: query
+                datasource:
+                    name: Expression
+                    type: __expr__
+                    uid: __expr__
+                expression: A
+                hide: false
+                intervalMs: 1000
+                maxDataPoints: 43200
+                reducer: last
+                refId: B
+                settings:
+                    mode: dropNN
+                type: reduce
+          dashboardUid: lxwKHktMk
+          panelId: 4
+          noDataState: NoData
+          execErrState: Error
+          for: 1m
+          annotations:
+            __dashboardUid__: lxwKHktMk
+            __panelId__: "4"
+            description: This alerts monitor CPU usage across instances and triggers if any instance exceeds a usage threshold of 75%
+            summary: 'CPU usage for {{ index $labels "instance" }} is {{ index $labels "severity" }} :  {{ index $values "B" }}'
+          labels:
+            severity: '{{ if gt $values.A.Value 90.0 }}critical{{ else if gt $values.A.Value 75.0 }}warning{{ else }}normal{{ end }}'
+          isPaused: false
+        - uid: df2099biol5oga
+          title: RAM Utilization
+          condition: C
+          data:
+            - refId: A
+              relativeTimeRange:
+                from: 600
+                to: 0
+              datasourceUid: ef205qustwxs0c
+              model:
+                editorMode: code
+                expr: 100 - 100 * (windows_memory_available_bytes{job="windows_exporter", instance="host.docker.internal:9182"} / windows_memory_physical_total_bytes{job="windows_exporter", instance="host.docker.internal:9182"})
+                instant: true
+                intervalMs: 1000
+                legendFormat: __auto
+                maxDataPoints: 43200
+                range: false
+                refId: A
+            - refId: C
+              relativeTimeRange:
+                from: 600
+                to: 0
+              datasourceUid: __expr__
+              model:
+                conditions:
+                    - evaluator:
+                        params:
+                            - 75
+                        type: gt
+                      operator:
+                        type: and
+                      query:
+                        params:
+                            - C
+                      reducer:
+                        params: []
+                        type: last
+                      type: query
+                datasource:
+                    type: __expr__
+                    uid: __expr__
+                expression: A
+                intervalMs: 1000
+                maxDataPoints: 43200
+                refId: C
+                type: threshold
+            - refId: B
+              datasourceUid: __expr__
+              model:
+                conditions:
+                    - evaluator:
+                        params:
+                            - 0
+                            - 0
+                        type: gt
+                      operator:
+                        type: and
+                      query:
+                        params: []
+                      reducer:
+                        params: []
+                        type: avg
+                      type: query
+                datasource:
+                    name: Expression
+                    type: __expr__
+                    uid: __expr__
+                expression: A
+                hide: false
+                intervalMs: 1000
+                maxDataPoints: 43200
+                reducer: last
+                refId: B
+                settings:
+                    mode: dropNN
+                type: reduce
+          dashboardUid: lxwKHktMk
+          panelId: 28
+          noDataState: NoData
+          execErrState: Error
+          for: 1m
+          annotations:
+            __dashboardUid__: lxwKHktMk
+            __panelId__: "28"
+            description: This alerts monitor RAM usage across instances and triggers if any instance exceeds a usage threshold of 75%
+            summary: 'RAM usage for {{ index $labels "instance" }} is {{ index $labels "severity" }} :  {{ index $values "B" }}'
+          labels:
+            severity: '{{ if gt $values.A.Value 90.0 }}critical{{ else if gt $values.A.Value 75.0 }}warning{{ else }}normal{{ end }}'
+          isPaused: false
+        - uid: bf209n1sw9hc0c
+          title: Disc Utilization
+          condition: C
+          data:
+            - refId: A
+              relativeTimeRange:
+                from: 600
+                to: 0
+              datasourceUid: ef205qustwxs0c
+              model:
+                editorMode: code
+                expr: 100 - 100 * (windows_logical_disk_free_bytes{job="windows_exporter", instance="host.docker.internal:9182"} / windows_logical_disk_size_bytes{job="windows_exporter", instance="host.docker.internal:9182"})
+                instant: true
+                intervalMs: 1000
+                legendFormat: __auto
+                maxDataPoints: 43200
+                range: false
+                refId: A
+            - refId: C
+              relativeTimeRange:
+                from: 600
+                to: 0
+              datasourceUid: __expr__
+              model:
+                conditions:
+                    - evaluator:
+                        params:
+                            - 70
+                        type: gt
+                      operator:
+                        type: and
+                      query:
+                        params:
+                            - C
+                      reducer:
+                        params: []
+                        type: last
+                      type: query
+                datasource:
+                    type: __expr__
+                    uid: __expr__
+                expression: A
+                intervalMs: 1000
+                maxDataPoints: 43200
+                refId: C
+                type: threshold
+            - refId: B
+              datasourceUid: __expr__
+              model:
+                conditions:
+                    - evaluator:
+                        params:
+                            - 0
+                            - 0
+                        type: gt
+                      operator:
+                        type: and
+                      query:
+                        params: []
+                      reducer:
+                        params: []
+                        type: avg
+                      type: query
+                datasource:
+                    name: Expression
+                    type: __expr__
+                    uid: __expr__
+                expression: A
+                hide: false
+                intervalMs: 1000
+                maxDataPoints: 43200
+                reducer: last
+                refId: B
+                settings:
+                    mode: dropNN
+                type: reduce
+          dashboardUid: lxwKHktMk
+          panelId: 26
+          noDataState: NoData
+          execErrState: Error
+          for: 1m
+          annotations:
+            __dashboardUid__: lxwKHktMk
+            __panelId__: "26"
+            description: This alerts monitor Disc utilization usage across instances and triggers if any instance/volume exceeds a usage threshold of 70%
+            summary: 'Disc utilization {{ index $labels "instance" }} and volume {{ index $labels "volume" }} is {{ index $labels "severity" }} :  {{ index $values "B" }}'
+          labels:
+            severity: '{{ if gt $values.A.Value 90.0 }}critical{{ else if gt $values.A.Value 75.0 }}warning{{ else }}normal{{ end }}'
+          isPaused: false
+        - uid: ef20arnoyyo00e
+          title: Overloaded System
+          condition: D
+          data:
+            - refId: A
+              relativeTimeRange:
+                from: 600
+                to: 0
+              datasourceUid: ef205qustwxs0c
+              model:
+                editorMode: code
+                expr: "100 * (1 - avg by(instance) (\r\n  irate(windows_cpu_time_total{\r\n    mode=\"idle\",\r\n    job=\"windows_exporter\",\r\n    instance=\"host.docker.internal:9182\"\r\n  }[$__rate_interval])\r\n))"
+                instant: true
+                intervalMs: 1000
+                legendFormat: __auto
+                maxDataPoints: 43200
+                range: false
+                refId: A
+            - refId: B
+              relativeTimeRange:
+                from: 600
+                to: 0
+              datasourceUid: ef205qustwxs0c
+              model:
+                datasource:
+                    type: prometheus
+                    uid: ef205qustwxs0c
+                editorMode: code
+                expr: 100 - 100 * (windows_memory_available_bytes{job="windows_exporter", instance="host.docker.internal:9182"} / windows_memory_physical_total_bytes{job="windows_exporter", instance="host.docker.internal:9182"})
+                instant: true
+                intervalMs: 1000
+                legendFormat: __auto
+                maxDataPoints: 43200
+                range: false
+                refId: B
+            - refId: C
+              relativeTimeRange:
+                from: 600
+                to: 0
+              datasourceUid: ef205qustwxs0c
+              model:
+                datasource:
+                    type: prometheus
+                    uid: ef205qustwxs0c
+                editorMode: code
+                expr: 100 - 100 * (windows_logical_disk_free_bytes{job="windows_exporter", instance="host.docker.internal:9182"} / windows_logical_disk_size_bytes{job="windows_exporter", instance="host.docker.internal:9182"})
+                instant: true
+                intervalMs: 1000
+                legendFormat: __auto
+                maxDataPoints: 43200
+                range: false
+                refId: C
+            - refId: D
+              datasourceUid: __expr__
+              model:
+                conditions:
+                    - evaluator:
+                        params:
+                            - 80
+                            - 0
+                        type: gt
+                      operator:
+                        type: and
+                      query:
+                        params:
+                            - A
+                      reducer:
+                        params: []
+                        type: last
+                      type: query
+                    - evaluator:
+                        params:
+                            - 85
+                            - 0
+                        type: gt
+                      operator:
+                        type: and
+                      query:
+                        params:
+                            - B
+                      reducer:
+                        params: []
+                        type: last
+                      type: query
+                    - evaluator:
+                        params:
+                            - 80
+                            - 0
+                        type: gt
+                      operator:
+                        type: and
+                      query:
+                        params:
+                            - C
+                      reducer:
+                        params: []
+                        type: last
+                      type: query
+                datasource:
+                    name: Expression
+                    type: __expr__
+                    uid: __expr__
+                expression: ""
+                intervalMs: 1000
+                maxDataPoints: 43200
+                refId: D
+                type: classic_conditions
+            - refId: E
+              datasourceUid: __expr__
+              model:
+                conditions:
+                    - evaluator:
+                        params:
+                            - 0
+                            - 0
+                        type: gt
+                      operator:
+                        type: and
+                      query:
+                        params: []
+                      reducer:
+                        params: []
+                        type: avg
+                      type: query
+                datasource:
+                    name: Expression
+                    type: __expr__
+                    uid: __expr__
+                expression: A
+                hide: false
+                intervalMs: 1000
+                maxDataPoints: 43200
+                reducer: last
+                refId: E
+                settings:
+                    mode: dropNN
+                type: reduce
+            - refId: F
+              datasourceUid: __expr__
+              model:
+                conditions:
+                    - evaluator:
+                        params:
+                            - 0
+                            - 0
+                        type: gt
+                      operator:
+                        type: and
+                      query:
+                        params: []
+                      reducer:
+                        params: []
+                        type: avg
+                      type: query
+                datasource:
+                    name: Expression
+                    type: __expr__
+                    uid: __expr__
+                expression: B
+                hide: false
+                intervalMs: 1000
+                maxDataPoints: 43200
+                reducer: last
+                refId: F
+                settings:
+                    mode: dropNN
+                type: reduce
+            - refId: G
+              datasourceUid: __expr__
+              model:
+                conditions:
+                    - evaluator:
+                        params:
+                            - 0
+                            - 0
+                        type: gt
+                      operator:
+                        type: and
+                      query:
+                        params: []
+                      reducer:
+                        params: []
+                        type: avg
+                      type: query
+                datasource:
+                    name: Expression
+                    type: __expr__
+                    uid: __expr__
+                expression: C
+                hide: false
+                intervalMs: 1000
+                maxDataPoints: 43200
+                reducer: last
+                refId: G
+                settings:
+                    mode: dropNN
+                type: reduce
+          noDataState: NoData
+          execErrState: Error
+          for: 1m
+          annotations:
+            description: This alerts monitor the system and is triggers when CPU >80% + RAM >85% + Disco >80%
+            summary: |-
+                Overloaded System : {{ index $labels "instance" }}
+                CPU: {{ index $values "E" }}, RAM: {{ index $values "F" }}; Disc: {{ index $values "G" }}
+          labels: {}
+          isPaused: false
+        - uid: cf20bttue25tsb
+          title: Memory Leak/ Zombie Process
+          condition: C
+          data:
+            - refId: A
+              relativeTimeRange:
+                from: 600
+                to: 0
+              datasourceUid: ef205qustwxs0c
+              model:
+                editorMode: code
+                expr: 100 - 100 * (windows_memory_available_bytes{job="windows_exporter", instance="host.docker.internal:9182"} / windows_memory_physical_total_bytes{job="windows_exporter", instance="host.docker.internal:9182"})
+                instant: true
+                intervalMs: 1000
+                legendFormat: __auto
+                maxDataPoints: 43200
+                range: false
+                refId: A
+            - refId: B
+              relativeTimeRange:
+                from: 600
+                to: 0
+              datasourceUid: ef205qustwxs0c
+              model:
+                datasource:
+                    type: prometheus
+                    uid: ef205qustwxs0c
+                editorMode: code
+                expr: "100 * (1 - avg by(instance) (\r\n  irate(windows_cpu_time_total{\r\n    mode=\"idle\",\r\n    job=\"windows_exporter\",\r\n    instance=\"host.docker.internal:9182\"\r\n  }[$__rate_interval])\r\n))"
+                instant: true
+                intervalMs: 1000
+                legendFormat: __auto
+                maxDataPoints: 43200
+                range: false
+                refId: B
+            - refId: C
+              relativeTimeRange:
+                from: 600
+                to: 0
+              datasourceUid: __expr__
+              model:
+                conditions:
+                    - evaluator:
+                        params:
+                            - 85
+                            - 0
+                        type: gt
+                      operator:
+                        type: and
+                      query:
+                        params:
+                            - A
+                      reducer:
+                        params: []
+                        type: last
+                      type: query
+                    - evaluator:
+                        params:
+                            - 30
+                            - 0
+                        type: lt
+                      operator:
+                        type: and
+                      query:
+                        params:
+                            - B
+                      reducer:
+                        params: []
+                        type: last
+                      type: query
+                datasource:
+                    name: Expression
+                    type: __expr__
+                    uid: __expr__
+                expression: ""
+                intervalMs: 1000
+                maxDataPoints: 43200
+                refId: C
+                type: classic_conditions
+            - refId: D
+              datasourceUid: __expr__
+              model:
+                conditions:
+                    - evaluator:
+                        params:
+                            - 0
+                            - 0
+                        type: gt
+                      operator:
+                        type: and
+                      query:
+                        params: []
+                      reducer:
+                        params: []
+                        type: avg
+                      type: query
+                datasource:
+                    name: Expression
+                    type: __expr__
+                    uid: __expr__
+                expression: A
+                hide: false
+                intervalMs: 1000
+                maxDataPoints: 43200
+                reducer: last
+                refId: D
+                settings:
+                    mode: dropNN
+                type: reduce
+            - refId: E
+              datasourceUid: __expr__
+              model:
+                conditions:
+                    - evaluator:
+                        params:
+                            - 0
+                            - 0
+                        type: gt
+                      operator:
+                        type: and
+                      query:
+                        params: []
+                      reducer:
+                        params: []
+                        type: avg
+                      type: query
+                datasource:
+                    name: Expression
+                    type: __expr__
+                    uid: __expr__
+                expression: B
+                hide: false
+                intervalMs: 1000
+                maxDataPoints: 43200
+                reducer: last
+                refId: E
+                settings:
+                    mode: dropNN
+                type: reduce
+          noDataState: NoData
+          execErrState: Error
+          for: 1m
+          annotations:
+            description: This alerts monitor memory and triggers when RAM >85% + CPU <30%
+            summary: 'Memory Leak / Zombie Process:  RAM {{ index $values "D" }}; Disc {{ index $values "E" }}'
+          labels: {}
+          isPaused: false

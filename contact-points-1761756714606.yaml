@@ -1,0 +1,30 @@
+apiVersion: 1
+contactPoints:
+    - orgId: 1
+      name: Webhook
+      receivers:
+        - uid: af206dzojlekhf
+          type: webhook
+          settings:
+            httpMethod: POST
+            message: '{{ template "Windows_template" }}'
+            url: https://webhook.site/2f7264ff-34ca-4d25-bfea-c60a5e0b8370
+          disableResolveMessage: false
+    - orgId: 1
+      name: Webhook-Flask
+      receivers:
+        - uid: df20jx9kxo83kb
+          type: webhook
+          settings:
+            httpMethod: POST
+            message: |-
+                {{ len .Alerts }} alert(s)
+
+                {{ range .Alerts }}
+                Summary: {{ .Annotations.summary }}
+                Status: {{ .Status }}
+                Description: {{ .Annotations.description }}
+
+                {{ end }}
+            url: http://webhook:5000/webhook
+          disableResolveMessage: false

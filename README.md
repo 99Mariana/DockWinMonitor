@@ -147,28 +147,27 @@ The Python file, built using Flask, acts as a lightweight web server that listen
 
 4. Open the Command Prompt and navigate to the project directory using:
 
-   ```bash
+   ```
    cd <monitoring-windows>
    ```
 
 5. Build and start the containers
 
-   ```bash
+   ```
    docker-compose up --build -d
    ```
 
 6. Check if everything is running
 
-   ```bash
+   ```
    docker ps
    ```
 
-7. Access Grafana to explore the dashboard, alert rules, and more.
-   Go to `http://localhost:3000` and log in with the default credentials `admin / admin`.
+7. Access Grafana to explore the dashboard, alert rules, and more. Go to `http://localhost:3000` and log in with the default credentials `admin / admin`.
 
 8. Stop the containers when finished
 
-   ```bash
+   ```
    docker-compose down
    ```
 

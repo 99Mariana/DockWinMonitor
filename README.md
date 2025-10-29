@@ -6,7 +6,7 @@
 
 </p>
 
-This project was developed with the main goal of exploring widely used and relevant technologies: Prometheus, Grafana, and Docker, and demonstrating their combined power in a practical and meaningful way. With this goal in mind a have a ideia to integrate these three tools, and develop a project to become possible to monitor Windows system performance in real time, collecting and visualizing key metrics for resource analysis and optimization.
+This project was developed with the main goal of exploring widely used and relevant technologies: Prometheus, Grafana, and Docker, and demonstrating their combined power in a practical and meaningful way. With this goal in mind I had the ideia to integrate these three tools, and develop a project to become possible to monitor Windows system performance in real time, collecting and visualizing key metrics for resource analysis and optimization.
 
 **Prometheus** : An open-source tool for collecting, storing, and querying time-series metrics, widely used for system and application monitoring in production environments.
 

@@ -16,32 +16,31 @@ In short, this project is designed to highlight the relevance and power of moder
 
 ## Technologies Used
 
-* **Docker & Docker Compose** → Used for containerization and orchestration via *Docker Desktop*.
-  The `docker-compose.yml` file defines images, exposed ports, volumes, networks, and environment variables.
+* **Docker & Docker Compose** -> Used for containerization and orchestration via *Docker Desktop*.
+                              -> The `docker-compose.yml` file defines images, exposed ports, volumes, networks, and environment variables.
 
-* **Prometheus** → Responsible for collecting and storing metrics from exporters (e.g., Windows Exporter).
-  The `prometheus.yml` file specifies endpoints, scrape intervals, jobs, targets, and alert rules.
-  Access: **[http://localhost:9090](http://localhost:9090)**
+* **Prometheus** -> Responsible for collecting and storing metrics from exporters (e.g., Windows Exporter).
+                 -> The `prometheus.yml` file specifies endpoints, scrape intervals, jobs, targets, and alert rules.
+                 -> Access: **[http://localhost:9090](http://localhost:9090)**
 
-* **Grafana** → Used for metric visualization, dashboard creation, and alert rule management.
-  Access: **[http://localhost:3000](http://localhost:3000)**
-  *Default login:* `admin / admin`
+* **Grafana** -> Used for metric visualization, dashboard creation, and alert rule management.
+              -> Access: **[http://localhost:3000](http://localhost:3000)**
+              -> *Default login:* `admin / admin`
 
-* **Windows Exporter** → Exposes system metrics from Windows (CPU, memory, disk, network, etc.).
-  Runs on the host and is accessed from containers via `host.docker.internal:9182`.
-  [Download Windows Exporter](https://github.com/prometheus-community/windows_exporter)
+* **Windows Exporter** -> Exposes system metrics from Windows (CPU, memory, disk, network, etc.).
+                       -> Runs on the host and is accessed from containers via `host.docker.internal:9182`.
+                       -> [Download Windows Exporter](https://github.com/prometheus-community/windows_exporter)
 
-* **External Webhook Contact Point (Webhook.site)** → A *Contact Point* was created in Grafana to send alerts to **Webhook.site**, an online webhook testing service.
-  This endpoint — **[https://webhook.site/#!/view/2f7264ff-34ca-4d25-bfea-c60a5e0b8370/](https://webhook.site/#!/view/2f7264ff-34ca-4d25-bfea-c60a5e0b8370/)** — was used to validate the correct delivery of alerts and verify their structure and formatting when received externally.
+* **External Webhook Contact Point (Webhook.site)** -> A *Contact Point* was created in Grafana to send alerts to **Webhook.site**, an online webhook testing service.
+                                                    -> This endpoint — **[https://webhook.site/#!/view/2f7264ff-34ca-4d25-bfea-c60a5e0b8370/](https://webhook.site/#!/view/2f7264ff-34ca-4d25-bfea-c60a5e0b8370/)** — was used to validate the correct delivery of alerts and verify their structure and formatting when received externally.
   
-* **Webhook Service (Flask-based)** → A custom webhook built with **Flask**, located in the `webhook` directory, created to **test how alert messages could be received as formatted text**.
-  This component includes:
-
+* **Webhook Service (Flask-based)** -> A custom webhook built with **Flask**, located in the `webhook` directory, created to **test how alert messages could be received as formatted text**.
+  -> This component includes:
   * a `Dockerfile` used to containerize the Flask webhook server, and
   * a `webhook_server.py` file responsible for handling incoming alert messages.
 
-  A **custom alert message template** was also created in Grafana and linked to this webhook through a dedicated *Contact Point*.
-  This setup allows alerts to be received by the **Flask webhook** (`webhook-flask`) in plain text, providing a readable and testable alert format.
+  -> A **custom alert message template** was also created in Grafana and linked to this webhook through a dedicated *Contact Point*.
+  -> This setup allows alerts to be received by the **Flask webhook** (`webhook-flask`) in plain text, providing a readable and testable alert format.
 
 
 ## Project Structure
@@ -70,20 +69,17 @@ A dashboard was created to provide real-time visualization of key Windows system
 * **Network Throughput**
 * **Active Processes**
 
-<img width="1895" height="894" alt="image" src="https://github.com/user-attachments/assets/3d2b1b87-5b31-4780-84d7-6e1f789130f3" />
-
+<img width="80%"  alt="image" src="https://github.com/user-attachments/assets/3d2b1b87-5b31-4780-84d7-6e1f789130f3" />
 
 The dashboard allows users to quickly detect system bottlenecks, track resource usage, and gain actionable insights for infrastructure optimization and performance management.
-
-Here’s a polished, cohesive version of your “Alert Rules” section in clear English, ready to integrate into your project documentation:
 
 
 **Alert Rules**
 
 Custom alert rules were created in Grafana( Grafana-managed alert rules ), triggering automatic notifications to configured contact points, such as Webhook.site or a Flask webhook.
-Several alerts were implemented, including **CPU Utilization**, **RAM Utilization**, **Disk Utilization**, **Overloaded System**, and **Memory Leak/Zombie Process**. 
+Several alerts were implemented, including: **CPU Utilization**, **RAM Utilization**, **Disk Utilization**, **Overloaded System**, and **Memory Leak/Zombie Process**. 
 
-<img width="1551" height="627" alt="image" src="https://github.com/user-attachments/assets/04bbbcf1-f350-460f-b18a-df791ed770cc" />
+<img width="80%" alt="image" src="https://github.com/user-attachments/assets/04bbbcf1-f350-460f-b18a-df791ed770cc" />
 
 For alert rules where the alert condition is based on a threshold, **severity levels** were defined using the **severity label**:
 
@@ -92,10 +88,12 @@ For alert rules where the alert condition is based on a threshold, **severity le
 * 🟩 **Normal**
 
 The label value is automatically assigned based on the value of the condition:
-<img width="772" height="346" alt="image" src="https://github.com/user-attachments/assets/719375e6-4061-4945-82a3-329d34cb03a6" /> 
-<img width="1508" height="733" alt="image" src="https://github.com/user-attachments/assets/dd30c7a4-6328-4ba2-80ba-0b1237d54b91" />
+<img width="50%" height="346" alt="image" src="https://github.com/user-attachments/assets/719375e6-4061-4945-82a3-329d34cb03a6" /> 
+<img width="80%" height="733" alt="image" src="https://github.com/user-attachments/assets/dd30c7a4-6328-4ba2-80ba-0b1237d54b91" />
 
-**Complex alert rules** were also developed, that are the case of **Overloaded System** alert triggers when three conditions are met simultaneously (**CPU > 80%**, **RAM > 85%**, and **Disk > 80%**), and the **Memory Leak/Zombie Process** alert triggers when two conditions are met (**RAM > 85%** and **CPU < 30%**).
+**Complex alert rules** were also developed, that are the case of:
+* **Overloaded System** alert triggers when three conditions are met simultaneously (**CPU > 80%**, **RAM > 85%**, and **Disk > 80%**)
+* **Memory Leak/Zombie Process** alert triggers when two conditions are met (**RAM > 85%** and **CPU < 30%**).
 
 canal do youtube: https://www.youtube.com/watch?v=h4Sl21AKiDg&list=PLy7NrYWoggjxCF3av5JKwyG7FFF9eLeL4
 

@@ -7,7 +7,9 @@
 This project was developed with the main goal of exploring widely used and relevant technologies: Prometheus, Grafana, and Docker, and demonstrating their combined power in a practical and meaningful way. With this goal in mind a have a ideia to integratethese three tools, and develop a project to become possible to monitor Windows system performance in real time, collecting and visualizing key metrics for resource analysis and optimization.
 
 **Prometheus** : An open-source tool for collecting, storing, and querying time-series metrics, widely used for system and application monitoring in production environments.
+
 **Grafana** : A powerful visualization platform that allows the creation of interactive dashboards, turning raw data into actionable insights.
+
 **Docker** : A containerization technology that simplifies service deployment and management, ensuring portability and consistent execution across environments.
 
 This project implements a Windows monitoring system using these technologies in a containerized environment, showcasing practical concepts of observability, infrastructure monitoring. It demonstrates how Prometheus, Grafana, and Docker can be combined to provide a robust and real-time monitoring solution, making it easier to understand system behavior and optimize resources efficiently.

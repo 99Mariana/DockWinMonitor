@@ -16,6 +16,23 @@ This project implements a Windows monitoring system using these technologies in 
 
 In short, this project is designed to highlight the relevance and power of modern monitoring tools while providing a hands-on example of how containerized solutions can enhance system management and operational efficiency.
 
+## Project Structure
+
+```
+/monitoring-windows/
+│
+├── docker-compose.yml
+│
+├── prometheus/
+│   └── prometheus.yml
+|
+└── webhook/
+    ├── Dockerfile
+    └── webhook_server.py
+
+```
+In this repository, in addition to the project's structural files, I share the files I developed, along with the configurations made in Grafana (dashboards, alert rules, and contact points). Additionally, there are three Markdown documents ([Grafana.md](Grafana.md), [Docker.md](Docker.md), [Prometheus.md](Prometheus.md)  where I have noted and summarized some key topics I learned about these tools. In these documents, you can find more detailed guidance on how to develop some of the components I worked on in this project.
+
 ## Technologies Used
 
 * **Docker & Docker Compose**:
@@ -49,23 +66,6 @@ In short, this project is designed to highlight the relevance and power of moder
 
      * A custom alert message template was also created in Grafana and linked to this webhook through a dedicated Contact Point.
      * This setup allows alerts to be received by the Flask webhook (`webhook-flask`) in plain text, providing a readable and testable alert format.
-
-
-## Project Structure
-
-```
-/monitoring-windows/
-│
-├── docker-compose.yml
-│
-├── prometheus/
-│   └── prometheus.yml
-|
-└── webhook/
-    ├── Dockerfile
-    └── webhook_server.py
-
-```
 
 ## Metrics and Dashboards
 

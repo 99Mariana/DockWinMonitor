@@ -2,7 +2,8 @@
 ## Windows System Monitoring with Prometheus + Grafana + Docker
 
 <p align="center">
-<img width="60%" alt="image" src="https://github.com/user-attachments/assets/a7089567-5cb3-4b66-8c4b-2051ea784b09" />
+<img width="75%" alt="image" src="https://github.com/user-attachments/assets/49811364-8dd4-4986-8c7c-87d03de10c19" />
+
 </p>
 
 This project was developed with the main goal of exploring widely used and relevant technologies: Prometheus, Grafana, and Docker, and demonstrating their combined power in a practical and meaningful way. With this goal in mind a have a ideia to integratethese three tools, and develop a project to become possible to monitor Windows system performance in real time, collecting and visualizing key metrics for resource analysis and optimization.
@@ -56,7 +57,7 @@ In this repository, in addition to the project's structural files, I share the f
      * [Download Windows Exporter](https://github.com/prometheus-community/windows_exporter)
 
 * **External Webhook Contact Point (Webhook.site)**:
-     * A *Contact Point* was created in Grafana to send alerts to Webhook.site, an online webhook testing service.
+     * A Contact Point was created in Grafana to send alerts to Webhook.site, an online webhook testing service.
      * This endpoint : **[https://webhook.site/####!/view/2f7264ff-34ca-4d25-bfea-c60a5e0b8370/](https://webhook.site/####!/view/2f7264ff-34ca-4d25-bfea-c60a5e0b8370/)**: was used to validate the correct delivery of alerts and verify their structure and formatting when received externally.
   
 * **Webhook Service (Flask-based)**:

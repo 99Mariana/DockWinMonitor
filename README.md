@@ -116,21 +116,9 @@ With both the contact point and the alert rule configured, we will start receivi
 
 To make the alert easier to read, we can create a template. In this example, the Flask webhook was used to receive the notification as a test, but a similar approach could also be applied to email notifications. Note that to be possible to extract the message sent by Grafana, it was necessary to develop the **`webhook_server.py`** file. Grafana sends alerts in raw JSON format through a Webhook, which by itself does not display the information in a readable or structured way. The script serves as a bridge between Grafana and the user, converting the JSON alert data into meaningful and readable information.
 
-The Python file, built using Flask, acts as a lightweight web server that listens for these alerts via HTTP POST requests. When an alert is received, the script extracts the relevant data — such as labels, values, and descriptions,  and replaces the dynamic variables in the alert template (for example, `{{ index $labels "instance" }}`) with their actual values. It then formats and prints a clear, human-readable message to the console.
+The Python file, built using Flask, acts as a lightweight web server that listens for these alerts via HTTP POST requests. When an alert is received, the script extracts the relevant data, such as labels, values, and descriptions,  and replaces the dynamic variables in the alert template with their actual values. It then formats and prints a clear, human-readable message to the console.
 
 <p align="center">
 <img width="80%" alt="image" src="https://github.com/user-attachments/assets/f345d29b-fcf3-48e0-a26d-b26d1b30b179" />
 </p>
-
-
-
-
-
-canal do youtube: https://www.youtube.com/watch?v=h4Sl21AKiDg&list=PLy7NrYWoggjxCF3av5JKwyG7FFF9eLeL4
-
-Udemy:
-https://www.udemy.com/course/prometheus-and-grafana-learn-monitoring-alerting-today/?utm_source=bing&utm_medium=udemyads&utm_campaign=BG-Search_DSA_Beta_Prof_la.EN_cc.ROW-English&campaigntype=Search&portfolio=Bing-ROW-English&language=EN&product=Course&test=&audience=DSA&topic=&priority=Beta&utm_content=deal4584&utm_term=_._ag_1326013411676364_._ad__._kw_IT+en_._de_c_._dm__._pl__._ti_dat-2334675503276564%3Aloc-152_._li_136968_._pd__._&matchtype=b&msclkid=867563032908100915820be5a09e823d&couponCode=PMNVD3025
-
-Parametros windows
-<img width="1895" height="894" alt="image" src="https://github.com/user-attachments/assets/3d2b1b87-5b31-4780-84d7-6e1f789130f3" />
 

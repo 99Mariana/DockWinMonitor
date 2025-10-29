@@ -123,7 +123,7 @@ Description: {{ .Annotations.description }}
 
 Note that to be possible to extract the message sent by Grafana, it was necessary to develop the **`webhook_server.py`** file. Grafana sends alerts in raw JSON format through a Webhook, which by itself does not display the information in a readable or structured way. The script serves as a bridge between Grafana and the user, converting the JSON alert data into meaningful and readable information.
 
-The Python file, built using Flask, acts as a lightweight web server that listens for these alerts via HTTP POST requests. When an alert is received, the script extracts the relevant data — such as labels, values, and descriptions — and replaces the dynamic variables in the alert template (for example, `{{ index $labels "instance" }}`) with their actual values. It then formats and prints a clear, human-readable message to the console.
+The Python file, built using Flask, acts as a lightweight web server that listens for these alerts via HTTP POST requests. When an alert is received, the script extracts the relevant data, such as labels, values, and descriptions, and replaces the dynamic variables in the alert template (for example, `{{ index $labels "instance" }}`) with their actual values. It then formats and prints a clear, human-readable message to the console.
 
 
 ### Annotations

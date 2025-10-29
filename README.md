@@ -1,26 +1,50 @@
-# Monitorização de Sistema Windows com Prometheus, Grafana e Docker
+# Windows System Monitoring with Prometheus, Grafana and Docker
 
 <p align="center">
 <img width="60%" alt="image" src="https://github.com/user-attachments/assets/a7089567-5cb3-4b66-8c4b-2051ea784b09" />
 </p>
 
-Este projeto surge com o principal objetivo de explorar ferramentas com grande relevancia no mundo tecnologico, Prometheus, Grafana e Docker. Através da integração destas três tecnologias, é possível observar em tempo real o desempenho do sistema.
+This project was developed with the main goal of exploring widely used and relevant technologies: Prometheus, Grafana, and Docker, and demonstrating their combined power in a practical and meaningful way. With this goal in mind a have a ideia to integratethese three tools, and develop a project to become possible to monitor Windows system performance in real time, collecting and visualizing key metrics for resource analysis and optimization.
 
-* **Prometheus** — Ferramenta open source para recolha, armazenamento e consulta de métricas em séries temporais (*time-series database*), muito usada para monitorizar sistemas e aplicações. 
-* **Grafana** — Plataforma de visualização e análise de métricas, que permite construir dashboards interativos para transformar dados em informação visual e útil.
-* **Docker** — Tecnologia de containerização que simplifica a implementação e gestão de serviços, garantindo portabilidade e facilidade de execução com um único comando.
+**Prometheus** — An open-source tool for collecting, storing, and querying time-series metrics, widely used for system and application monitoring in production environments.
+**Grafana** — A powerful visualization platform that allows the creation of interactive dashboards, turning raw data into actionable insights.
+**Docker** — A containerization technology that simplifies service deployment and management, ensuring portability and consistent execution across environments.
 
-Neste sentido idealizei um projeto que pudesse combinar stas ferramentas de forma poderosa e relevante e assim surgiu o conceito de criar um projeto que visa implementar um sistema de **monitorização do Windows**. O projeto demonstra de forma prática os conceitos de **observabilidade**, **monitorização de infraestrutura** e **automação de ambientes com containers**.
+This project implements a Windows monitoring system using these technologies in a containerized environment, showcasing practical concepts of observability, infrastructure monitoring. It demonstrates how Prometheus, Grafana, and Docker can be combined to provide a robust and real-time monitoring solution, making it easier to understand system behavior and optimize resources efficiently.
+
+In short, this project is designed to highlight the relevance and power of modern monitoring tools while providing a hands-on example of how containerized solutions can enhance system management and operational efficiency.
+
+## Technologies Used
+
+* **Docker & Docker Compose** → Used for containerization and orchestration via *Docker Desktop*.
+  The `docker-compose.yml` file defines images, exposed ports, volumes, networks, and environment variables.
+
+* **Prometheus** → Responsible for collecting and storing metrics from exporters (e.g., Windows Exporter).
+  The `prometheus.yml` file specifies endpoints, scrape intervals, jobs, targets, and alert rules.
+  Access: **[http://localhost:9090](http://localhost:9090)**
+
+* **Grafana** → Used for metric visualization, dashboard creation, and alert rule management.
+  Access: **[http://localhost:3000](http://localhost:3000)**
+  *Default login:* `admin / admin`
+
+* **Windows Exporter** → Exposes system metrics from Windows (CPU, memory, disk, network, etc.).
+  Runs on the host and is accessed from containers via `host.docker.internal:9182`.
+  [Download Windows Exporter](https://github.com/prometheus-community/windows_exporter)
+
+* **External Webhook Contact Point (Webhook.site)** → A *Contact Point* was created in Grafana to send alerts to **Webhook.site**, an online webhook testing service.
+  This endpoint — **[https://webhook.site/#!/view/2f7264ff-34ca-4d25-bfea-c60a5e0b8370/](https://webhook.site/#!/view/2f7264ff-34ca-4d25-bfea-c60a5e0b8370/)** — was used to validate the correct delivery of alerts and verify their structure and formatting when received externally.
+  
+* **Webhook Service (Flask-based)** → A custom webhook built with **Flask**, located in the `webhook` directory, created to **test how alert messages could be received as formatted text**.
+  This component includes:
+
+  * a `Dockerfile` used to containerize the Flask webhook server, and
+  * a `webhook_server.py` file responsible for handling incoming alert messages.
+
+  A **custom alert message template** was also created in Grafana and linked to this webhook through a dedicated *Contact Point*.
+  This setup allows alerts to be received by the **Flask webhook** (`webhook-flask`) in plain text, providing a readable and testable alert format.
 
 
-## Tecnologias Utilizadas
-
-* **Docker & Docker Compose** → Docker desktop to containerização e orquestração dos serviços. O docker-compose.yml que specifies which images to use , the ports to expose, volumes to mount, networks to connect, environment variables. 
-* **Prometheus** → Recolha e armazenamento das métricas dos exporters (ex: Windows Exporter). O Ficheiro prometheus.yml é o ficheiro de configuração principal do Prometheus, definindo quais endpoints o Prometheus deve monitorar, ajustar intervalos de scraping (de quanto em quanto tempo coleta métricas), adiciona rótulos, targets e jobs. Este serviço é acedido por: http://localhost:9090
-* **Grafana** → Visualização de métricas, criação de dashboards, alert rules, definição de contact points. Este serviço é acedido por: http://localhost:3000 ( Login padrão: admin / admin )
-* **Windows Exporter** → Ferramenta para expor métricas do sistema Windows. utilizando o **Windows Exporter** como fonte de métricas. Windows Exporter (em host.docker.internal:9182), significa que o foco é monitorizar o sistema Windows do host. Descarregar e instalar a ferramenta: https://github.com/prometheus-community/windows_exporter
-
-## Estrutura de Diretórios
+## Project Structure
 
 ```
 /monitoring-windows/
@@ -28,20 +52,50 @@ Neste sentido idealizei um projeto que pudesse combinar stas ferramentas de form
 ├── docker-compose.yml
 │
 ├── prometheus/
-    └── prometheus.yml
+│   └── prometheus.yml
+|
+└── webhook/
+    ├── Dockerfile
+    └── webhook_server.py
+
 ```
 
-## Metricas
+## Metrics and Dashboards
 
-Neste projeto foi desenvolvido um dashboard no Grafana que inclui diferentes metricas de desempenho do sistema, desde CPU Usage, Memory Usage, Disk IO, Network Throughput entre outros.
+A dashboard was created to provide real-time visualization of key Windows system metrics, enabling easy monitoring and analysis of important performance indicators, including:
+
+* **CPU Usage**
+* **Memory Usage**
+* **Disk I/O**
+* **Network Throughput**
+* **Active Processes**
 
 <img width="1895" height="894" alt="image" src="https://github.com/user-attachments/assets/3d2b1b87-5b31-4780-84d7-6e1f789130f3" />
 
-Foram estabelecidas alert rules para diferentes metricas sendo despoletado uma notificação que é recebida no webhook ( https://webhook.site/#!/view/2f7264ff-34ca-4d25-bfea-c60a5e0b8370/ ) sendo este o contact point criado para o efeito. Em cada alert rule, de acordo com o valor obtido no na condição de alerta tem atribuida um nivel de severidade( Critical, Warning, Normal ) na label serevity , a qual é calculada automaticamente. Alert rules com condições complexas foram desenvolvidas como é o caso do: Sistema sobrecarregado, que corresponde a combinação de tres requesitos ( CPU >80% + RAM >85% + Disco >80% ) e o alert rule Leak ou processo zombie
-com dois requesitos ( RAM >85% + CPU <30% )
+
+The dashboard allows users to quickly detect system bottlenecks, track resource usage, and gain actionable insights for infrastructure optimization and performance management.
+
+Here’s a polished, cohesive version of your “Alert Rules” section in clear English, ready to integrate into your project documentation:
 
 
+**Alert Rules**
 
+Custom alert rules were created in Grafana( Grafana-managed alert rules ), triggering automatic notifications to configured contact points, such as Webhook.site or a Flask webhook.
+Several alerts were implemented, including **CPU Utilization**, **RAM Utilization**, **Disk Utilization**, **Overloaded System**, and **Memory Leak/Zombie Process**. 
+
+<img width="1551" height="627" alt="image" src="https://github.com/user-attachments/assets/04bbbcf1-f350-460f-b18a-df791ed770cc" />
+
+For alert rules where the alert condition is based on a threshold, **severity levels** were defined using the **severity label**:
+
+* 🟥 **Critical**
+* 🟧 **Warning**
+* 🟩 **Normal**
+
+The label value is automatically assigned based on the value of the condition:
+<img width="772" height="346" alt="image" src="https://github.com/user-attachments/assets/719375e6-4061-4945-82a3-329d34cb03a6" /> 
+<img width="1508" height="733" alt="image" src="https://github.com/user-attachments/assets/dd30c7a4-6328-4ba2-80ba-0b1237d54b91" />
+
+**Complex alert rules** were also developed, that are the case of **Overloaded System** alert triggers when three conditions are met simultaneously (**CPU > 80%**, **RAM > 85%**, and **Disk > 80%**), and the **Memory Leak/Zombie Process** alert triggers when two conditions are met (**RAM > 85%** and **CPU < 30%**).
 
 canal do youtube: https://www.youtube.com/watch?v=h4Sl21AKiDg&list=PLy7NrYWoggjxCF3av5JKwyG7FFF9eLeL4
 

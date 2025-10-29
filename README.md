@@ -77,31 +77,54 @@ A dashboard was created to provide real-time visualization of key Windows system
 * **Network Throughput**
 * **Active Processes**
 
+<p align="center">
 <img width="80%"  alt="image" src="https://github.com/user-attachments/assets/3d2b1b87-5b31-4780-84d7-6e1f789130f3" />
+</p>
 
 The dashboard allows users to quickly detect system bottlenecks, track resource usage, and gain actionable insights for infrastructure optimization and performance management.
 
 
 **Alert Rules**
 
-Custom alert rules were created in Grafana( Grafana-managed alert rules ), triggering automatic notifications to configured contact points, such as Webhook.site or a Flask webhook.
-Several alerts were implemented, including: **CPU Utilization**, **RAM Utilization**, **Disk Utilization**, **Overloaded System**, and **Memory Leak/Zombie Process**. 
+Custom alert rules were created in Grafana( Grafana-managed alert rules ), triggering automatic notifications to configured contact points, such as Webhook.site or a Flask webhook. The alerts implemented include: **CPU Utilization**, **RAM Utilization**, **Disk Utilization**, **Overloaded System**, and **Memory Leak/Zombie Process**. 
 
+<p align="center">
 <img width="80%" alt="image" src="https://github.com/user-attachments/assets/04bbbcf1-f350-460f-b18a-df791ed770cc" />
+</p>
 
-For alert rules where the alert condition is based on a threshold, **severity levels** were defined using the **severity label**:
+For alert rules where the alert condition is based on a threshold, **severity levels** were defined using the **severity label**: **Critical**, **Warning**, **Normal**
 
-* 🟥 **Critical**
-* 🟧 **Warning**
-* 🟩 **Normal**
-
-The label value is automatically assigned based on the value of the condition:
+<p align="center">
 <img width="50%" height="346" alt="image" src="https://github.com/user-attachments/assets/719375e6-4061-4945-82a3-329d34cb03a6" /> 
+</p> 
+
+The label value is automatically assigned based on the value of the condition: 
+
+<p align="center">
 <img width="80%" height="733" alt="image" src="https://github.com/user-attachments/assets/dd30c7a4-6328-4ba2-80ba-0b1237d54b91" />
+</p>
 
 **Complex alert rules** were also developed, that are the case of:
   * **Overloaded System** alert triggers when three conditions are met simultaneously (**CPU > 80%**, **RAM > 85%**, and **Disk > 80%**)
   * **Memory Leak/Zombie Process** alert triggers when two conditions are met (**RAM > 85%** and **CPU < 30%**).
+
+With both the contact point and the alert rule configured, we will start receiving alert notifications through a public webhook. This setup allows us to monitor when an alert is triggered and when the issue has been resolved, providing a complete view of the alert lifecycle.
+
+<p align="center">
+<img width="80%"  alt="image" src="https://github.com/user-attachments/assets/b58218d1-908b-4605-b645-740aa67b3e84" />
+</p>
+
+To make the alert easier to read, we can create a template. In this example, the Flask webhook was used to receive the notification as a test, but a similar approach could also be applied to email notifications. Note that to be possible to extract the message sent by Grafana, it was necessary to develop the **`webhook_server.py`** file. Grafana sends alerts in raw JSON format through a Webhook, which by itself does not display the information in a readable or structured way. The script serves as a bridge between Grafana and the user, converting the JSON alert data into meaningful and readable information.
+
+The Python file, built using Flask, acts as a lightweight web server that listens for these alerts via HTTP POST requests. When an alert is received, the script extracts the relevant data — such as labels, values, and descriptions,  and replaces the dynamic variables in the alert template (for example, `{{ index $labels "instance" }}`) with their actual values. It then formats and prints a clear, human-readable message to the console.
+
+<p align="center">
+<img width="80%" alt="image" src="https://github.com/user-attachments/assets/f345d29b-fcf3-48e0-a26d-b26d1b30b179" />
+</p>
+
+
+
+
 
 canal do youtube: https://www.youtube.com/watch?v=h4Sl21AKiDg&list=PLy7NrYWoggjxCF3av5JKwyG7FFF9eLeL4
 

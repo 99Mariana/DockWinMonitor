@@ -8,8 +8,8 @@
     - [Images and Containers?](#images_containers)
     - [Creation of a Dockerfile](#dockerfile)
     - [Docker Compose](#dockercompose)
-    - [Main Docker commands](#commands)
-    - [Best Pratices](#pratices)
+    - [Main Docker Commands](#commands)
+    - [Docker Best Pratices](#pratices)
 
 
 ### What is Docker?
@@ -273,19 +273,47 @@ Related to this document is important to know some commands:
 | `docker inspect --format='{{json .State.Health}}' <container>` | Checks the current health status of a container.                             |                                                                 |
 | `docker run -e <VAR>=<value> <image>`                          | Sets environment variables inside a container at runtime.                    |                    
 
-### Best Pratices
+### Docker Best Pratices
 > [Docker](#Docker) > [Content](#content) > [This section](#pratices)
 
-This pratices will improve security , optimize de Docker image size , take advantage of some Docker features and develop a more cleaner and maintainable Dockerfiles. 
+These practices will improve security, optimize Docker image size, take advantage of Docker features, and result in cleaner, more maintainable Dockerfiles.
 
-* Use official and verified Docker images when available
-* Use specific image versions, that avoid unpreditable behavior. Fixate the version , the more specific the better.
-* Choose Image based on a leaner and smaller OS distro. ```eg: node: 17.0.1-alpine```
-* Optimize caching image layers. Order Dockerfile commands from least to most frequently changing.
-* Create .dockerignore file to explicitly exclude files and folders, in order to reduce image size ad prevent unintended secrets expose. This file should lost the files and folders that is unecessary and so will be ignored.
-* 
-* 
+* Use official and verified Docker images whenever possible. Official images are regularly maintained, tested, and patched for security vulnerabilities. Avoid using unverified or community images unless you fully trust the source and have reviewed the Dockerfile.
 
+* Specify image versions to avoid unpredictable behavior. The more specific the version, the better.
 
+* Choose a base image with a lightweight OS distribution (e.g., Alpine, Slim, or Distroless) to reduce image size, build time, and attack surface. However, it is important to note that some lightweight images lack standard build tools (e.g., `gcc`, `make`), so additional setup may be required if your application compiles native dependencies.
 
-https://www.youtube.com/watch?v=8vXoMqWgbQQ
+* Optimize caching of image layers by ordering Dockerfile commands from least to most frequently changing. This structure allows Docker to reuse cached layers for dependencies unless `package*.json` changes.
+
+  ```dockerfile
+  COPY package*.json ./
+  RUN npm ci --only=production
+  COPY . .
+  ```
+
+* Create a `.dockerignore` file to explicitly exclude unnecessary files and folders, reducing image size and preventing accidental exposure of secrets. This file should list all files and directories that are not required in the image.
+
+* Use multi-stage builds (Build Stage and Runtime Stage) to separate build dependencies from the final image. Only the Runtime Stage commands should be included in the final image layers, resulting in a smaller, cleaner container.
+
+  ```dockerfile
+  # Build Stage
+  FROM node:20-alpine AS build
+  WORKDIR /app
+  COPY package*.json ./
+  RUN npm ci
+  COPY . .
+  RUN npm run build
+
+  # Runtime Stage
+  FROM node:20-alpine AS runtime
+  WORKDIR /app
+  COPY --from=build /app/dist ./dist
+  CMD ["node", "dist/index.js"]
+  ```
+
+* Use the least-privileged user and group. Some images (e.g., `node`) already include a default non-root user, so it’s not necessary to create a new one in such cases. This prevents the container from running as a host OS user, reducing the risk of privilege escalation.
+
+* Use the `docker scan <image_name>` command to detect known vulnerabilities in dependencies or base images. After reviewing the results, update dependencies or code to resolve identified issues.
+
+For further information on this topic, I recommend the following video: https://www.youtube.com/watch?v=8vXoMqWgbQQ

@@ -9,6 +9,7 @@
     - [Creation of a Dockerfile](#dockerfile)
     - [Docker Compose](#dockercompose)
     - [Main Docker commands](#commands)
+    - [Best Pratices](#pratices)
 
 
 ### What is Docker?
@@ -271,3 +272,20 @@ Related to this document is important to know some commands:
 | `HEALTHCHECK` *(Dockerfile instruction)*                       | Defines a command in a Dockerfile that periodically checks container health. |                                                                 |
 | `docker inspect --format='{{json .State.Health}}' <container>` | Checks the current health status of a container.                             |                                                                 |
 | `docker run -e <VAR>=<value> <image>`                          | Sets environment variables inside a container at runtime.                    |                    
+
+### Best Pratices
+> [Docker](#Docker) > [Content](#content) > [This section](#pratices)
+
+This pratices will improve security , optimize de Docker image size , take advantage of some Docker features and develop a more cleaner and maintainable Dockerfiles. 
+
+* Use official and verified Docker images when available
+* Use specific image versions, that avoid unpreditable behavior. Fixate the version , the more specific the better.
+* Choose Image based on a leaner and smaller OS distro. ```eg: node: 17.0.1-alpine```
+* Optimize caching image layers. Order Dockerfile commands from least to most frequently changing.
+* Create .dockerignore file to explicitly exclude files and folders, in order to reduce image size ad prevent unintended secrets expose. This file should lost the files and folders that is unecessary and so will be ignored.
+* 
+* 
+
+
+
+https://www.youtube.com/watch?v=8vXoMqWgbQQ

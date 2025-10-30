@@ -58,7 +58,7 @@ In this repository, in addition to the project's structural files, I share the f
 
 * **External Webhook Contact Point (Webhook.site)**:
      * A Contact Point was created in Grafana to send alerts to Webhook.site, an online webhook testing service.
-     * This endpoint: **[https://webhook.site/](https://webhook.site/####!/view/2f7264ff-34ca-4d25-bfea-c60a5e0b8370/)**: was used to validate the correct delivery of alerts and verify their structure and formatting when received externally.
+     * This endpoint: **[https://webhook.site/](https://webhook.site/####!/view/2f7264ff-34ca-4d25-bfea-c60a5e0b8370/)** was used to validate the correct delivery of alerts and verify their structure and formatting when received externally.
   
 * **Webhook Service (Flask-based)**:
      * A custom webhook built with Flask, located in the `webhook` directory, created to test how alert messages could be received as formatted text.

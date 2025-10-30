@@ -14,7 +14,7 @@ This project was developed with the main goal of exploring widely used and relev
 
 **Docker** : A containerization technology that simplifies service deployment and management, ensuring portability and consistent execution across environments.
 
-This project implements a Windows monitoring system using these technologies in a containerized environment, showcasing practical concepts of observability, infrastructure monitoring. It demonstrates how Prometheus, Grafana, and Docker can be combined to provide a robust and real-time monitoring solution, making it easier to understand system behavior and optimize resources efficiently.
+This project implements a Windows monitoring system using these technologies in a containerized environment, demonstrating practical concepts of observability and infrastructure monitoring. It shows how Prometheus, Grafana, and Docker can be combined to provide a robust, real-time monitoring solution that makes it easier to understand system behavior and optimize resource usage efficiently.
 
 In short, this project is designed to highlight the relevance and power of modern monitoring tools while providing a hands-on example of how containerized solutions can enhance system management and operational efficiency.
 
@@ -33,7 +33,7 @@ In short, this project is designed to highlight the relevance and power of moder
     └── webhook_server.py
 
 ```
-In this repository, in addition to the project's structural files, I share the files I developed, along with the configurations made in Grafana (dashboards, alert rules, and contact points). Additionally, there are three Markdown documents ( [Grafana.md](Grafana.md), [Docker.md](Docker.md), [Prometheus.md](Prometheus.md) ) where I note and summarize some key topics I learned about these tools. In these documents, you can find more detailed guidance on how to develop some of the components I worked on in this project.
+In this repository, in addition to the project's structural files, I share the files I developed, along with the configurations made in Grafana ([Dashboard](Dashboard.json), [Alert rules](Alert-rules.yaml), and [Contact points](Contact-points.yaml)). Additionally, there are three Markdown documents ( [Grafana.md](Grafana.md), [Docker.md](Docker.md), [Prometheus.md](Prometheus.md) ) where I note and summarize some key topics I learned about these tools. In these documents, you can find more detailed guidance on how to develop some of the components I worked on in this project.
 
 ## Technologies Used
 
@@ -58,7 +58,7 @@ In this repository, in addition to the project's structural files, I share the f
 
 * **External Webhook Contact Point (Webhook.site)**:
      * A Contact Point was created in Grafana to send alerts to Webhook.site, an online webhook testing service.
-     * This endpoint : **[https://webhook.site/####!/view/2f7264ff-34ca-4d25-bfea-c60a5e0b8370/](https://webhook.site/####!/view/2f7264ff-34ca-4d25-bfea-c60a5e0b8370/)**: was used to validate the correct delivery of alerts and verify their structure and formatting when received externally.
+     * This endpoint: **[https://webhook.site/](https://webhook.site/####!/view/2f7264ff-34ca-4d25-bfea-c60a5e0b8370/)**: was used to validate the correct delivery of alerts and verify their structure and formatting when received externally.
   
 * **Webhook Service (Flask-based)**:
      * A custom webhook built with Flask, located in the `webhook` directory, created to test how alert messages could be received as formatted text.
